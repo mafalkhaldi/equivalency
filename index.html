@@ -616,6 +616,9 @@ var LANG="ar";
 function t(k,vars){ var v=T[k]; if(!v)return k; var s=v[LANG==="en"?1:0]; if(vars)Object.keys(vars).forEach(function(x){s=s.replace("{"+x+"}",vars[x])}); return s; }
 function nm(a){ return LANG==="en"?(EN[a]||a):a; }
 function nmPath(p){ return p.split(" / ").map(nm).join(" / "); }
+/* country priority: US, UK, AU, NZ first, then the rest, Gulf/Arab countries last */
+var CORDER=["US","UK","AU","NZ","IE","MT","SA","AE","BH"];
+function crank(c){var i=CORDER.indexOf(c);return i<0?99:i}
 function ctry(c){ return LANG==="en"?COUNTRIES_EN[c]:COUNTRIES[c]; }
 
 /* ---------- constants ---------- */
@@ -809,7 +812,7 @@ function drawOptions(){
     if(!catCount[S.cat])S.cat=CATS.filter(function(c){return catCount[c.id]})[0].id;
     html+='<div class="flabel">'+t("fCat")+'</div><div class="chips">'+CATS.filter(function(c){return catCount[c.id]}).map(function(c){return chip("cat",c.id,catName(c),S.cat===c.id,catCount[c.id])}).join("")+'</div>';
     rows=abroadRows(S.cat);
-    var cc=countBy(rows,function(r){return r.country}), codes=Object.keys(COUNTRIES).filter(function(k){return cc[k]});
+    var cc=countBy(rows,function(r){return r.country}), codes=CORDER.filter(function(k){return cc[k]});
     if(S.country!=="all"&&!cc[S.country])S.country="all";
     html+='<div class="flabel">'+t("fCountry")+'</div><div class="chips">'+chip("country","all",t("allCountries"),S.country==="all",rows.length)+codes.map(function(k){return chip("country",k,flag(k)+esc(ctry(k)),S.country===k,cc[k])}).join("")+'</div>';
     if(S.cat==="oth")html+='<input class="search" id="q" type="search" placeholder="'+esc(t("searchOth"))+'" value="'+esc(S.q)+'">';
@@ -835,7 +838,9 @@ function drawOptions(){
   var byStatus=S.path==="ab"&&["med","dent","phar"].indexOf(S.cat)>-1, RANK={ok:0,mid:1,no:2,na:3};
   var rank=function(r){return r.gate?4:RANK[rowStatus(r).cls]}, key=function(r){return r.cut===null?r.min:r.cut};
   /* Medicine, Dentistry, Pharmacy: smallest gap first ("short by" least to most), not eligible last; others: highest requirement first */
-  rows.sort(function(a,b){ return byStatus ? (rank(a)-rank(b)) || ((a.cut-a.you)-(b.cut-b.you)) : key(b)-key(a); });
+  var byCountry=S.path==="ab"&&S.cat==="oth";
+  /* Other programs: grouped by country priority, then highest requirement first */
+  rows.sort(function(a,b){ return byStatus ? (rank(a)-rank(b)) || ((a.cut-a.you)-(b.cut-b.you)) : byCountry ? (crank(a.country)-crank(b.country)) || (key(b)-key(a)) : key(b)-key(a); });
   if(S.path==="ab")$("lead4").textContent=byStatus?t("lead4AbStatus"):t("lead4Ab");
   var focus=document.activeElement&&document.activeElement.id==="q", caret=focus?document.activeElement.selectionStart:0;
   $("filters").innerHTML=html;
