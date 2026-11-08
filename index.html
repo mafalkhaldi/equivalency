@@ -6,6 +6,9 @@
 <title>NavitaEdu Major Finder · مستشار التخصص</title>
 <meta name="description" content="مستشار التخصص من نافيتا: دخّل نسبة الثانوية واختبارات القدرات واعرف معدلك المكافئ والتخصصات المتاحة لك في جامعة الكويت وجامعة عبدالله السالم والبعثات الخارجية — بيانات رسمية 2026/2027.">
 <meta name="theme-color" content="#203355">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKDECKPX5D"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BKDECKPX5D');</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NavitaEdu">
 <meta property="og:title" content="مستشار التخصص الجامعي | NavitaEdu Major Finder">
@@ -467,6 +470,8 @@ var FLAG_SVG={
  KW:'<rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#007A3D"/><rect y="13.33" width="30" height="6.67" fill="#CE1126"/><path d="M0,0L8,6.67V13.33L0,20z" fill="#000"/>'
 };
 function flag(c){ return '<span class="flag" aria-hidden="true"><svg viewBox="0 0 30 20" preserveAspectRatio="none">'+FLAG_SVG[c]+'</svg></span>'; }
+/* Analytics events: only choices are sent, never scores, names or messages */
+function track(name,params){ try{ if(window.gtag)gtag("event",name,Object.assign({language:LANG},params||{})); }catch(e){} }
 var LANG="ar";
 function t(k,vars){ var v=T[k]; if(!v)return k; var s=v[LANG==="en"?1:0]; if(vars)Object.keys(vars).forEach(function(x){s=s.replace("{"+x+"}",vars[x])}); return s; }
 function nm(a){ return LANG==="en"?(EN[a]||a):a; }
@@ -758,22 +763,23 @@ function choosePath(p){
 }
 document.addEventListener("click",function(ev){
   var b=ev.target.closest("button,a"); if(!b)return;
-  if(b.id==="langBtn"){LANG=LANG==="ar"?"en":"ar";applyLang();return}
+  if(b.id==="langBtn"){LANG=LANG==="ar"?"en":"ar";applyLang();track("language_switch");return}
   if(b.dataset.go){go(+b.dataset.go);return}
   if(b.hasAttribute("data-back")){go(S.step-1);return}
   if(b.hasAttribute("data-restart")){restart();return}
   if(b.closest("#track")){S.track=b.dataset.v;segSet("track",S.track);return}
   if(b.closest("#engMode")){setEngMode(b.dataset.v);$("f-eng").classList.remove("err");return}
-  if(b.dataset.path){choosePath(b.dataset.path);return}
-  if(b.id==="switchAb"){choosePath("ab");return}
-  if(b.dataset.g){var g=b.dataset.g; S[g]=b.dataset.v; if(g==="cat"){S.country="all";S.q=""} if(g==="uni"){S.college="all"} drawOptions(); return}
-  if(b.dataset.key){togglePick(b.dataset.key);return}
+  if(b.dataset.path){choosePath(b.dataset.path);track(b.dataset.path==="kw"?"destination_kuwait":"destination_abroad");return}
+  if(b.id==="switchAb"){choosePath("ab");track("destination_abroad",{from:"kuwait_results"});return}
+  if(b.dataset.g){var g=b.dataset.g; S[g]=b.dataset.v; if(g==="cat")track("category_view",{category:b.dataset.v}); if(g==="country"&&b.dataset.v!=="all")track("country_view",{country:b.dataset.v,category:S.cat}); if(g==="uni"&&b.dataset.v!=="all")track("university_view",{university:b.dataset.v}); if(g==="cat"){S.country="all";S.q=""} if(g==="uni"){S.college="all"} drawOptions(); return}
+  if(b.dataset.key){var adding=!S.picks.some(function(p){return p.key===b.dataset.key}); togglePick(b.dataset.key); if(adding){var pr=rowByKey(b.dataset.key); track("option_added",{category:pr.cat.id,country:pr.country});} return}
   if(b.dataset.rm!=null){S.picks.splice(+b.dataset.rm,1);drawPicked();updateMessage();return}
   if(b.id==="addAr"){go(3);setTimeout(function(){$("ar").focus()},300);return}
 });
-$("go2").addEventListener("click",function(){ if(validate1())unlock(2); else { var e=document.querySelector(".field.err input:not([hidden]),.field.err select:not([hidden])"); if(e)e.focus(); } });
+$("go2").addEventListener("click",function(){ if(validate1()){unlock(2);track("scores_submitted",{track:S.track,english_type:S.engMode});} else { var e=document.querySelector(".field.err input:not([hidden]),.field.err select:not([hidden])"); if(e)e.focus(); } });
 $("go4").addEventListener("click",function(){ var k=num($("ar").value); var bad=S.path==="kw"&&$("ar").value!==""&&!inRange(k,0,100); $("f-ar").classList.toggle("err",bad); if(!bad)unlock(4); else $("ar").focus(); });
-$("go5").addEventListener("click",function(){ if(S.path==="ab")unlock(5); });
+$("go5").addEventListener("click",function(){ if(S.path==="ab"){unlock(5);track("apply_step",{options_picked:S.picks.length});} });
+$("waBtn").addEventListener("click",function(){ track("whatsapp_click",{options_picked:S.picks.length,categories:uniq(S.picks.map(function(p){return p.cat.id})).join(",")||S.cat,major_entered:!!$("interest").value.trim()}); });
 ["hs","math","eng","engSel"].forEach(function(id){$(id).addEventListener("input",function(){$(id).closest(".field").classList.remove("err"); if(S.maxStep>1){S.maxStep=1;drawStepper()}})});
 $("ar").addEventListener("input",function(){$("f-ar").classList.remove("err"); if(S.maxStep>3)S.maxStep=3; drawStepper(); drawEq();});
 $("filters").addEventListener("input",function(e){if(e.target.id==="q"){S.q=e.target.value;drawOptions()}});
