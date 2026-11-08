@@ -326,20 +326,157 @@ footer a{color:var(--navy)}
 var COUNTRIES={US:"الولايات المتحدة",UK:"المملكة المتحدة",IE:"إيرلندا",AU:"أستراليا",NZ:"نيوزيلندا",MT:"مالطا",BH:"البحرين",SA:"السعودية",AE:"الإمارات"};
 var FLAGS={US:"🇺🇸",UK:"🇬🇧",IE:"🇮🇪",AU:"🇦🇺",NZ:"🇳🇿",MT:"🇲🇹",BH:"🇧🇭",SA:"🇸🇦",AE:"🇦🇪"};
 
-/* MOHE external scholarships: [country, major, cutoff, type E=equivalent H=high school] */
+/* MOHE scholarships abroad — 2026/27 plan (148 majors) merged with lowest admitted 2026/27 (128).
+   [country, Arabic name, English name (as in the plan), lowest admitted or null, rate type E=equivalent H=high school (null = no published cutoff), plan minimum high-school %, open to arts track 1/0] */
 var MOHE=[
-["AU","الهندسة الميكاترونيكية",83.77,"E"],["SA","دكتور في الصيدلة",91.5165,"E"],["AU","صيدلة",90.69,"E"],["IE","صيدلة",89.61,"E"],["BH","صيدلة",92.6135,"E"],["NZ","صيدلة",90.2815,"E"],
-["AU","طب أسنان",96.265,"E"],["UK","طب أسنان",95.8015,"E"],["IE","طب أسنان",99.1165,"E"],["NZ","طب أسنان",95.433,"E"],
-["AU","طب بشري",95.58,"E"],["SA","طب بشري",96.0905,"E"],["UK","طب بشري",96.6305,"E"],["IE","طب بشري",96.7425,"E"],["MT","طب بشري",95.838,"E"],["BH","طب بشري",96.0885,"E"],["NZ","طب بشري",95.86,"E"],
-["AU","طب بيطري",93.3615,"E"],
-["US","هندسة أمن سيبراني",67.2895,"E"],["AU","هندسة المساحة",76.602,"E"],["AU","هندسة برمجيات",77.5645,"E"],["NZ","هندسة برمجيات",92.8195,"E"],["US","هندسة بيئية",68.046,"E"],["AU","هندسة طاقة متجددة وكهربائية",79.172,"E"],["AU","هندسة طبية حيوية",77.045,"E"],["US","هندسة طبية حيوية",59.553,"E"],["IE","هندسة طبية حيوية",79.812,"E"],["AE","هندسة كمبيوتر",75.64,"E"],["US","هندسة كمبيوتر",70.3515,"E"],["AU","هندسة كمبيوتر وشبكات",75.961,"E"],["US","هندسة معمارية",73.451,"E"],
-["US","أحياء",90.2,"H"],["AU","أشعة تشخيصية",87.6,"H"],["BH","أشعة تشخيصية",95.71,"H"],["AU","أمن سيبراني",86.94,"H"],["NZ","أمن سيبراني",85.71,"H"],["IE","أمن سيبراني وتحاليل جنائية لتكنولوجيا المعلومات",91.92,"H"],["AU","إدارة الإنشاءات",88.36,"H"],["IE","إدارة التكنولوجيا",85.16,"H"],["US","إدارة سلسلة توريد",85.28,"H"],["SA","بصريات",90.01,"H"],["NZ","بصريات",88.89,"H"],["AU","تصميم المنتجات",87.68,"H"],["US","تصميم جرافيك",85.4,"H"],["UK","تصوير بالأشعة",93.81,"H"],["US","تصوير بالأشعة",85.3,"H"],["IE","تصوير بالأشعة",93.78,"H"],["AE","تصوير تشخيصي طبي",94.2,"H"],["UK","تغذية",92.22,"H"],["SA","تغذية سريرية",91.23,"H"],["AE","تغذية علاجية وحميات",90.27,"H"],["IE","تقنيات علاجية متقدمة",95,"H"],["NZ","تقنية الأسنان",95.7,"H"],["SA","تكنولوجيا طبية حيوية",90.42,"H"],
-["AU","تمريض",86.8,"H"],["AE","تمريض",90.23,"H"],["SA","تمريض",94.66,"H"],["UK","تمريض",92.34,"H"],["IE","تمريض",92.3,"H"],["MT","تمريض",95.51,"H"],["BH","تمريض",90,"H"],["NZ","تمريض",87.22,"H"],["IE","تمريض الأطفال",93.17,"H"],
-["SA","خدمات طبية طارئة",90.73,"H"],["IE","دراسات اكتوارية ومالية",86.4,"H"],["SA","رعاية الأسنان",90.27,"H"],["US","ريادة الأعمال",85,"H"],["US","رياضيات",87.96,"H"],["AU","صحة الفم",92.53,"H"],["IE","طب حيوي وعلوم الحياة",91.57,"H"],["AU","طوارئ طبية",85.63,"H"],["NZ","طوارئ طبية",90.44,"H"],
-["AU","علاج أمراض القدم",87.8,"H"],["IE","علاج أمراض القدم",90.88,"H"],["MT","علاج أمراض القدم",93.86,"H"],["NZ","علاج أمراض القدم",85.58,"H"],["IE","علاج إشعاعي",92,"H"],["SA","علاج تنفسي",96.92,"H"],
-["AU","علاج طبيعي",95.25,"H"],["AE","علاج طبيعي",97.12,"H"],["SA","علاج طبيعي",98.3,"H"],["UK","علاج طبيعي",96.64,"H"],["IE","علاج طبيعي",95.5,"H"],["NZ","علاج طبيعي",94.73,"H"],
-["SA","علاج علل النطق والسمع",92.39,"H"],["AU","علاج نطق",89.02,"H"],["AU","علاج وظيفي",89.81,"H"],["IE","علاج وظيفي",92.79,"H"],["IE","علم الأحياء الدقيقة",85.76,"H"],["AU","علم الأدوية",88.94,"H"],["UK","علم الأدوية",94.72,"H"],["UK","علم الأطعمة",86.45,"H"],["AU","علم البيانات",85.2,"H"],["UK","علم البيانات",86.84,"H"],["IE","علم البيانات",85.91,"H"],["US","علم الحركة",86.45,"H"],["IE","علم الخلية والبيولوجيا الجزيئية",87.99,"H"],["AU","علم الذكاء الاصطناعي",85.1,"H"],["NZ","علم الذكاء الاصطناعي",85.2,"H"],["IE","علم العمارة",86.84,"H"],
-["IE","علم الكمبيوتر",86.63,"H"],["AU","علم المختبرات الطبية",85.73,"H"],["AE","علم المختبرات الطبية",90.92,"H"],["US","علم المختبرات الطبية",85.04,"H"],["BH","علم المختبرات الطبية",94.91,"H"],["NZ","علم المختبرات الطبية",91.92,"H"],["AU","علم المناعة وعلم الأمراض",86.41,"H"],["SA","علوم أشعة",94,"H"],["UK","علوم اكتوارية",85,"H"],["AU","علوم التغذية",86,"H"],["IE","علوم الرياضة والصحة",92.4,"H"],["SA","علوم المختبرات الإكلينيكية",92.28,"H"],["AU","علوم بحرية",85.21,"H"],["SA","علوم صحة المجتمع / تعليم صحي",95.17,"H"],["AU","علوم طبية حيوية",85.07,"H"],["NZ","علوم طبية حيوية",86.4,"H"],["AU","علوم كمبيوتر",85.2,"H"],["UK","علوم كمبيوتر",88.94,"H"],["US","علوم كمبيوتر",85,"H"],["UK","علوم كمبيوتر / أمن سيبراني",92.8,"H"],["UK","علوم كمبيوتر / ذكاء اصطناعي",89.36,"H"],["US","عمارة",85.45,"H"],["US","عمارة المناظر الطبيعية",89.58,"H"],["US","فيزياء",85.8,"H"],["US","كيمياء حيوية",89.12,"H"],["IE","كيمياء حيوية وبيولوجيا جزيئية",88.18,"H"],["AU","لغة إنجليزية وآدابها",85.54,"H"],["US","لغة إنجليزية وآدابها",86.5,"H"]
+["US", "هندسة معمارية", "Architectural Engineering", 73.451, "E", 90, 0],
+["US", "هندسة أمن سيبراني", "Cyber Security Engineering", 67.2895, "E", 90, 0],
+["US", "هندسة طبية حيوية", "Biomedical Engineering", 59.553, "E", 90, 0],
+["US", "هندسة كمبيوتر", "Computer Engineering", 70.3515, "E", 90, 0],
+["US", "هندسة بيئية", "Environmental Engineering", 68.046, "E", 90, 0],
+["US", "عمارة المناظر الطبيعية", "Landscape Architecture", 89.58, "H", 85, 0],
+["US", "دراسة وتخطيط المدن", "Urban / City Planning", null, null, 85, 0],
+["US", "عمارة", "Architecture", 85.45, "H", 85, 0],
+["US", "علم المختبرات الطبية", "Medical Laboratory Science", 85.04, "H", 85, 0],
+["US", "تصوير بالأشعة", "Radiography", 85.3, "H", 85, 0],
+["US", "علم الحركة", "Kinesiology", 86.45, "H", 85, 0],
+["US", "علوم كمبيوتر", "Computer Science", 85, "H", 85, 0],
+["US", "إحصاء", "Statistics", null, null, 85, 0],
+["US", "كيمياء حيوية", "Biochemistry", 89.12, "H", 85, 0],
+["US", "فيزياء", "Physics", 85.8, "H", 85, 0],
+["US", "كيمياء", "Chemistry", null, null, 85, 0],
+["US", "أحياء", "Biology", 90.2, "H", 85, 0],
+["US", "رياضيات", "Mathematics", 87.96, "H", 85, 0],
+["US", "تصميم جرافيك", "Graphic Design", 85.4, "H", 85, 1],
+["US", "لغة إنجليزية وآدابها", "English Literature", 86.5, "H", 85, 1],
+["US", "ريادة الأعمال", "Entrepreneurship", 85, "H", 85, 1],
+["US", "إدارة سلسلة توريد", "Supply Chain Management", 85.28, "H", 85, 1],
+["UK", "طب بشري", "Medicine", 96.6305, "E", 95, 0],
+["UK", "طب أسنان", "Dentistry", 95.8015, "E", 95, 0],
+["UK", "تصوير بالأشعة", "Radiography", 93.81, "H", 90, 0],
+["UK", "علوم كمبيوتر / أمن سيبراني", "Computer Science / Cyber Security", 92.8, "H", 85, 0],
+["UK", "علوم كمبيوتر", "Computer Science", 88.94, "H", 85, 0],
+["UK", "علوم كمبيوتر / ذكاء اصطناعي", "Computer Science / Artificial Intelligence", 89.36, "H", 85, 0],
+["UK", "علم الأدوية", "Pharmacology", 94.72, "H", 85, 0],
+["UK", "علم الأطعمة", "Food Science", 86.45, "H", 85, 0],
+["UK", "تغذية", "Nutrition", 92.22, "H", 85, 0],
+["UK", "علاج طبيعي", "Physiotherapy", 96.64, "H", 85, 0],
+["UK", "تمريض", "Nursing", 92.34, "H", 85, 0],
+["UK", "علوم اكتوارية", "Actuarial Science", 85, "H", 85, 0],
+["UK", "علم البيانات", "Data Science", 86.84, "H", 85, 0],
+["IE", "طب بشري", "Medicine", 96.7425, "E", 97, 0],
+["IE", "طب أسنان", "Dentistry", 99.1165, "E", 96, 0],
+["IE", "صيدلة", "Pharmacy", 89.61, "E", 96, 0],
+["IE", "تمريض", "Nursing", 92.3, "H", 90, 0],
+["IE", "تمريض الأطفال", "Children Nursing", 93.17, "H", 90, 0],
+["IE", "تمريض الصحة العقلية", "Mental Health Nursing", null, null, 90, 0],
+["IE", "تمريض الإعاقة الفكرية", "Intellectual Disability Nursing", null, null, 90, 0],
+["IE", "تقنيات علاجية متقدمة", "Advanced Therapeutic Technologies", 95, "H", 92, 0],
+["IE", "علاج طبيعي", "Physiotherapy", 95.5, "H", 92, 0],
+["IE", "تصوير بالأشعة", "Radiography", 93.78, "H", 90, 0],
+["IE", "علاج إشعاعي", "Radiation Therapy", 92, "H", 90, 0],
+["IE", "طب حيوي وعلوم الحياة", "Biomedical Health & Life Sciences", 91.57, "H", 90, 0],
+["IE", "صحة الإنسان والأمراض", "Human Health & Diseases", null, null, 90, 0],
+["IE", "علوم الصحة والأداء", "Health & Performance Science", null, null, 90, 0],
+["IE", "علاج أمراض القدم", "Podiatry", 90.88, "H", 90, 0],
+["IE", "علاج وظيفي", "Occupational Therapy", 92.79, "H", 90, 0],
+["IE", "التغذية البشرية", "Human Nutrition", null, null, 90, 0],
+["IE", "علوم الرياضة والصحة", "Sport Science & Health", 92.4, "H", 90, 0],
+["IE", "علم الخلية والبيولوجيا الجزيئية", "Cell & Molecular Biology", 87.99, "H", 85, 0],
+["IE", "علم الأحياء الدقيقة", "Microbiology", 85.76, "H", 85, 0],
+["IE", "هندسة طبية حيوية", "Biomedical Engineering", 79.812, "E", 90, 0],
+["IE", "كيمياء حيوية وبيولوجيا جزيئية", "Biochemistry & Molecular Biology", 88.18, "H", 85, 0],
+["IE", "أمن سيبراني وتحاليل جنائية لتكنولوجيا المعلومات", "Cyber Security & IT Forensics", 91.92, "H", 85, 0],
+["IE", "علم الكمبيوتر", "Computer Science", 86.63, "H", 85, 0],
+["IE", "علم البيانات", "Data Science", 85.91, "H", 85, 0],
+["IE", "علوم الزراعة", "Agricultural Sciences", null, null, 85, 0],
+["IE", "إدارة التكنولوجيا", "Technology Management", 85.16, "H", 85, 0],
+["IE", "دراسات اكتوارية ومالية", "Actuarial & Financial Studies", 86.4, "H", 85, 0],
+["IE", "تطوير ألعاب الكمبيوتر", "Computer Game Development", null, null, 85, 0],
+["IE", "الوسائط المتعددة", "Multimedia", null, null, 85, 0],
+["IE", "علم العمارة", "Architectural Science", 86.84, "H", 85, 0],
+["AU", "طب بشري", "Medicine", 95.58, "E", 95, 0],
+["AU", "طب أسنان", "Dentistry", 96.265, "E", 95, 0],
+["AU", "صيدلة", "Pharmacy", 90.69, "E", 92, 0],
+["AU", "هندسة طاقة متجددة وكهربائية", "Electrical & Renewable Energy Engineering", 79.172, "E", 90, 0],
+["AU", "هندسة كمبيوتر وشبكات", "Computer & Network Engineering", 75.961, "E", 90, 0],
+["AU", "هندسة طبية حيوية", "Biomedical Engineering", 77.045, "E", 90, 0],
+["AU", "هندسة برمجيات", "Software Engineering", 77.5645, "E", 90, 0],
+["AU", "هندسة المواد", "Materials Engineering", null, "E", 90, 0],
+["AU", "الهندسة الميكاترونيكية", "Mechatronics Engineering", 83.77, "E", 90, 0],
+["AU", "هندسة المساحة", "Surveying Engineering", 76.602, "E", 90, 0],
+["AU", "علاج أمراض القدم", "Podiatric", 87.8, "H", 85, 0],
+["AU", "علاج نطق", "Speech Pathology", 89.02, "H", 85, 0],
+["AU", "علاج وظيفي", "Occupational Therapy", 89.81, "H", 85, 0],
+["AU", "أشعة تشخيصية", "Diagnostic Radiography", 87.6, "H", 85, 0],
+["AU", "أمن سيبراني", "Cyber Security", 86.94, "H", 85, 0],
+["AU", "علاج طبيعي", "Physiotherapy", 95.25, "H", 95, 0],
+["AU", "صحة الفم", "Oral Health", 92.53, "H", 90, 0],
+["AU", "طب بيطري", "Veterinary Medicine", 93.3615, "E", 95, 0],
+["AU", "علم المناعة وعلم الأمراض", "Immunology & Pathology", 86.41, "H", 85, 0],
+["AU", "علوم طبية حيوية", "Biomedical Sciences", 85.07, "H", 85, 0],
+["AU", "تمريض", "Nursing", 86.8, "H", 85, 0],
+["AU", "طوارئ طبية", "Paramedic (Honours) Practice", 85.63, "H", 85, 0],
+["AU", "علوم كمبيوتر", "Computer Science", 85.2, "H", 85, 0],
+["AU", "علوم الزراعة", "Agricultural Sciences", null, null, 85, 0],
+["AU", "علم الذكاء الاصطناعي", "Artificial Intelligence", 85.1, "H", 85, 0],
+["AU", "إحصاء", "Statistics", null, null, 85, 0],
+["AU", "علم المختبرات الطبية", "Medical Laboratory Science", 85.73, "H", 85, 0],
+["AU", "علم البيانات", "Data Science", 85.2, "H", 85, 0],
+["AU", "علوم التغذية", "Food & Human Nutrition", 86, "H", 85, 0],
+["AU", "علوم بحرية", "Marine Biology – Coastal & Marine Science", 85.21, "H", 85, 0],
+["AU", "علم الأدوية", "Pharmacology – Pharmaceutical Science", 88.94, "H", 85, 0],
+["AU", "لغة إنجليزية وآدابها", "English Literature", 85.54, "H", 85, 1],
+["AU", "إدارة الإنشاءات", "Construction Management", 88.36, "H", 85, 1],
+["AU", "تصميم المنتجات", "Product Design", 87.68, "H", 85, 1],
+["AU", "الإدارة السياحية والضيافة", "Tourism and Hospitality Management", null, null, 85, 1],
+["NZ", "طب بشري", "Medicine", 95.86, "E", 95, 0],
+["NZ", "طب أسنان", "Dentistry", 95.433, "E", 95, 0],
+["NZ", "صيدلة", "Pharmacy", 90.2815, "E", 92, 0],
+["NZ", "علم المختبرات الطبية", "Medical Laboratory Science", 91.92, "H", 90, 0],
+["NZ", "علاج طبيعي", "Physiotherapy", 94.73, "H", 90, 0],
+["NZ", "بصريات", "Optometry", 88.89, "H", 85, 0],
+["NZ", "طوارئ طبية", "Paramedic", 90.44, "H", 85, 0],
+["NZ", "علاج أمراض القدم", "Podiatry", 85.58, "H", 85, 0],
+["NZ", "أمن سيبراني", "Cyber Security", 85.71, "H", 85, 0],
+["NZ", "تقنية الأسنان", "Dental Technology", 95.7, "H", 85, 0],
+["NZ", "صحة الفم", "Oral Health", null, null, 85, 0],
+["NZ", "علوم طبية حيوية", "Biomedical Sciences", 86.4, "H", 85, 0],
+["NZ", "تمريض", "Nursing", 87.22, "H", 85, 0],
+["NZ", "علوم الزراعة", "Agricultural Sciences", null, null, 85, 0],
+["NZ", "علم البيانات", "Data Science", null, null, 85, 0],
+["NZ", "هندسة التصنيع الغذائي", "Food Processing Engineering", null, "E", 90, 0],
+["NZ", "هندسة برمجيات", "Software Engineering", 92.8195, "E", 90, 0],
+["NZ", "علم الذكاء الاصطناعي", "Artificial Intelligence", 85.2, "H", 85, 0],
+["NZ", "الإدارة السياحية والضيافة", "Tourism and Hospitality Management", null, null, 85, 1],
+["MT", "طب بشري", "Medicine", 95.838, "E", 95, 0],
+["MT", "علاج أمراض القدم", "Podiatric", 93.86, "H", 90, 0],
+["MT", "تمريض", "Nursing", 95.51, "H", 90, 0],
+["BH", "طب بشري", "Medicine", 96.0885, "E", 97, 0],
+["BH", "صيدلة", "Pharmacy", 92.6135, "E", 92, 0],
+["BH", "تمريض", "Nursing", 90, "H", 90, 0],
+["BH", "علم المختبرات الطبية", "Medical Laboratory Science", 94.91, "H", 90, 0],
+["BH", "أشعة تشخيصية", "Diagnostic Radiography", 95.71, "H", 90, 0],
+["SA", "طب بشري", "Medicine", 96.0905, "E", 95, 0],
+["SA", "دكتور في الصيدلة", "Pharmacy (Pharm D)", 91.5165, "E", 92, 0],
+["SA", "خدمات طبية طارئة", "Emergency Medical Services", 90.73, "H", 90, 0],
+["SA", "تمريض", "Nursing", 94.66, "H", 90, 0],
+["SA", "علوم أشعة", "Radiology Sciences", 94, "H", 90, 0],
+["SA", "رعاية الأسنان", "Dental Care", 90.27, "H", 90, 0],
+["SA", "تكنولوجيا طبية حيوية", "Biomedical Technology", 90.42, "H", 90, 0],
+["SA", "علوم صحة المجتمع / تعليم صحي", "Community Health Sciences / Health Education", 95.17, "H", 90, 0],
+["SA", "تغذية سريرية", "Clinical Nutrition", 91.23, "H", 90, 0],
+["SA", "بصريات", "Optometry", 90.01, "H", 90, 0],
+["SA", "علاج طبيعي", "Physical Therapy", 98.3, "H", 90, 0],
+["SA", "علاج تنفسي", "Respiratory Therapy", 96.92, "H", 90, 0],
+["SA", "علاج علل النطق والسمع", "Treatment Of Speech & Hearing Disorder", 92.39, "H", 90, 0],
+["SA", "علوم المختبرات الإكلينيكية", "Clinical Laboratory Sciences", 92.28, "H", 90, 0],
+["AE", "تغذية علاجية وحميات", "Clinical Nutrition and Dietetics", 90.27, "H", 90, 0],
+["AE", "علاج طبيعي", "Physiotherapy", 97.12, "H", 90, 0],
+["AE", "تصوير تشخيصي طبي", "Medical Diagnostic Imaging", 94.2, "H", 90, 0],
+["AE", "تمريض", "Nursing", 90.23, "H", 85, 0],
+["AE", "علم المختبرات الطبية", "Medical Laboratory Science", 90.92, "H", 85, 0],
+["AE", "هندسة كمبيوتر", "Computer Engineering", 75.64, "E", 90, 0]
 ];
 
 /* Kuwait University: [path, code, cutoff, type, section(""|sci|lit)] */
@@ -405,7 +542,7 @@ var T={
  s2h:["وين حاب تدرس؟","Where would you like to study?"],
  s2lead:["اختر وجهتك وبنحسب لك المعدلات اللي تخصها.","Choose a destination and we'll calculate the rates that apply to it."],
  kwT:["جامعات الكويت","Kuwait universities"], kwS:["جامعة الكويت وجامعة عبدالله السالم","Kuwait University & Abdullah Al Salem University"],
- abT:["البعثات الخارجية","Scholarships abroad"], abS:["بعثات وزارة التعليم العالي في 9 دول","MOHE scholarships in 9 countries"], programs:["تخصص","programs"],
+ abT:["البعثات الخارجية","Scholarships abroad"], abS:["خطة بعثات وزارة التعليم العالي 2027/2026 — 9 دول","MOHE Scholarship Plan 2026/27 — 9 countries"], programs:["تخصص","programs"],
  s3h:["معدلاتك المكافئة","Your equivalent rates"],
  s3leadAb:["معدلك لكل مجموعة تخصصات حسب خطة البعثات.","Your rate for each group of programs under the scholarship plan."],
  s3leadKw:["معدلك لكل كلية — كل كلية لها اختبارات قدرات مختلفة.","Your rate for each college — each college counts different aptitude tests."],
@@ -429,7 +566,10 @@ var T={
  arabic:["العربي","Arabic"], notEntered:["غير مُدخل","not entered"], addAr:["+ أضف درجة العربي","+ Add Arabic score"],
  lgOk:["ضمن المعدل","Within range"], lgMid:["قريب (أقل بـ 1.5% أو أقل)","Close (within 1.5%)"], lgNo:["دون أقل شخص مقبول","Below lowest admitted"],
  st_ok:["ضمن المعدل","Within range"], st_mid:["قريب","Close"], st_no:["أقل","Below"], st_na:["أدخل المعدل","Enter rate"],
- lowest:["أقل شخص مقبول 27/26","Lowest admitted 2026/27"], yourRate:["معدلك","Your rate"], yourHs:["نسبتك","Your average"],
+ lowest:["أقل شخص مقبول 27/26","Lowest admitted 2026/27"], minApply:["الحد الأدنى للتقديم: ثانوية","Minimum to apply: high school"],
+ eligible:["مؤهل للتقديم","Eligible to apply"], noCut:["بدون نسبة قبول منشورة","no published cutoff"],
+ litOnly:["خريجو القسم الأدبي يقدرون يقدمون على {n} تخصصات في البعثات — المقارنة بنسبة الثانوية.","Arts-track graduates can apply to {n} scholarship programs — compared with your high school average."],
+ waMin:["الحد الأدنى للتقديم","minimum to apply"], yourRate:["معدلك","Your rate"], yourHs:["نسبتك","Your average"],
  above:["أعلى بـ","Above by"], short:["ينقصك","Short by"], hsBased:["بنسبة الثانوية","high school based"], code:["رمز","code"],
  est:["معدل تقديري","estimated rate"], mmi:["يشمل مقابلة MMI","includes MMI interview"], add:["+ أضف","+ Add"], added:["✓ مضاف","✓ Added"],
  empty:["ما في تخصصات تطابق البحث.","No programs match your search."],
@@ -446,7 +586,7 @@ var T={
  copied:["✓ تم نسخ الرسالة","✓ Message copied"], copyFail:["ما قدرنا ننسخ — حدد النص من المعاينة وانسخه","Couldn't copy — select the text in the preview and copy it"],
  waNum:["إذا ما انفتح واتساب، انسخ الرسالة وأرسلها على الرقم:","If WhatsApp doesn't open, copy the message and send it to:"], waNeedInterest:["اكتب التخصص اللي يهمك أول","Type the major you're interested in first"],
  howTitle:["كيف تقرأ النتائج؟","How to read the results"],
- howTxt:["النسب المعروضة هي أقل شخص مقبول للعام الجامعي 27/26، وتتغير كل سنة حسب التنافس وعدد المقاعد، فهي استرشادية وليست ضماناً للقبول.","Figures show the lowest admitted student for 2026/27. They change every year with competition and available seats, so they are a guide, not a guarantee of admission."],
+ howTxt:["النسب المعروضة هي أقل شخص مقبول للعام الجامعي 27/26، وتتغير كل سنة حسب التنافس وعدد المقاعد، فهي استرشادية وليست ضماناً للقبول. «الحد الأدنى للتقديم» من خطة البعثات 2027/2026، وكل تخصص له شروط إضافية في الخطة.","Figures show the lowest admitted student for 2026/27. They change every year with competition and available seats, so they are a guide, not a guarantee of admission. “Minimum to apply” comes from the MOHE Scholarship Plan 2026/27; each program has further conditions in the plan."],
  srcTitle:["المصادر الرسمية:","Official sources:"], srcMohe:["خطة البعثات 27/26 – وزارة التعليم العالي","MOHE Scholarship Plan 2026/27"], srcKuW:["أوزان اختبارات القدرات – جامعة الكويت","KU aptitude test weights"], srcKuR:["الحدود الدنيا – جامعة الكويت","KU minimum rates"], srcAasu:["نتائج القبول – جامعة عبدالله السالم","AASU admission results"],
  estNote:["«معدل تقديري»: جامعة عبدالله السالم لم تنشر أوزانها، وأوزان الطب البيطري في البعثات قيد التأكيد.","“Estimated rate”: Abdullah Al Salem University has not published its weights, and the Veterinary Medicine scholarship weights are being confirmed."],
  /* WhatsApp message */
@@ -530,8 +670,12 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp
 function num(v){var n=parseFloat(v);return isFinite(n)?n:NaN}
 function inRange(n,a,b){return isFinite(n)&&n>=a&&n<=b}
 function pct(v){return '<span class="num">'+f2(v)+'%</span>'}
-function catOf(r){ if(r[3]==="H")return "oth"; var m=r[1];
-  if(m==="طب بشري")return "med"; if(m==="طب أسنان")return "dent"; if(m.indexOf("صيدلة")>-1)return "phar"; if(m==="طب بيطري")return "vet"; return "eng"; }
+/* MOHE row: [country, ar, en, lowest admitted|null, type E/H/null, plan minimum %, arts-open] */
+function catOf(r){ var m=r[1];
+  if(m==="طب بشري")return "med"; if(m==="طب أسنان")return "dent"; if(m.indexOf("صيدلة")>-1)return "phar"; if(m==="طب بيطري")return "vet";
+  return r[4]==="E"?"eng":"oth"; }
+function trackMohe(){ return MOHE.filter(function(r){return S.track!=="lit"||r[6]}); }
+function abName(r){ return LANG==="en"?r.en:r.ar; }
 function english(){
   if(S.engMode==="pct"){var v=num($("eng").value);return inRange(v,0,100)?{score:v,label:f2(v)+"%"}:null}
   if(S.engMode==="ielts"){var b=num($("engSel").value);return isFinite(b)?{score:IELTS[b],label:"IELTS "+b+" ("+IELTS[b]+"%)"}:null}
@@ -544,7 +688,7 @@ function eqv(w,s){ if(w==="hs")return s.hs; var x=W[w]; return x.hs*s.hs+x.eng*s
 function kuRate(k,s){ var w=KW[k]; if(w.ar&&!isFinite(s.ar))return NaN; return w.hs*s.hs+w.en*s.e.score+w.m*s.math+(w.ar?w.ar*s.ar:0); }
 function kuGate(k,s){ var w=KW[k]; if(w.minHs&&s.hs<w.minHs)return t("gateHs",{n:w.minHs}); if(w.minEn&&s.e.score<w.minEn)return t("gateEn",{n:w.minEn}); return ""; }
 function status(v,c){ if(!isFinite(v))return {cls:"na",txt:t("st_na")}; if(v>=c)return {cls:"ok",txt:t("st_ok")}; if(v>=c-MARGIN)return {cls:"mid",txt:t("st_mid")}; return {cls:"no",txt:t("st_no")}; }
-function rowStatus(r){ return r.gate?{cls:"no",txt:t("notElig")}:r.needAr?{cls:"na",txt:t("needAr")}:status(r.you,r.cut); }
+function rowStatus(r){ return r.gate?{cls:"no",txt:t("notElig")}:r.needAr?{cls:"na",txt:t("needAr")}:r.noCut?{cls:"ok",txt:t("eligible")}:status(r.you,r.cut); }
 function gapTxt(v,c){ if(!isFinite(v))return ""; var d=v-c; return (d>=0?t("above"):t("short"))+" "+pct(Math.abs(d)); }
 
 /* ---------- language ---------- */
@@ -609,6 +753,7 @@ function drawEq(){
   $("arBox").hidden=S.path!=="kw";
   if(S.path==="ab"){
     $("lead3").textContent=t("s3leadAb");
+    if(S.track==="lit"){ html=eqCard(t("hs"),t("litOnly",{n:trackMohe().length}),s.hs,"",true); $("official3").textContent=t("officialAb"); $("eqgrid").innerHTML=html; postHeight(); return; }
     html=eqCard(catName(CATS[0])+" · "+catName(CATS[1]),"",eqv("med",s))+eqCard(catName(CATS[2]),"",eqv("phar",s))+eqCard(catName(CATS[4]),"",eqv("eng",s))+eqCard(t("hs"),catName(CATS[5]),s.hs,"",true);
     $("official3").textContent=t("officialAb");
   } else {
@@ -625,9 +770,10 @@ function drawEq(){
 /* ---------- step 4 data ---------- */
 function abroadRows(cat){
   var s=scores();
-  return MOHE.filter(function(r){return catOf(r)===cat}).map(function(r){
-    var c=CATS.filter(function(x){return x.id===cat})[0];
-    return {key:"ab|"+r[0]+"|"+r[1],path:"ab",country:r[0],ar:r[1],cut:r[2],type:r[3],cat:c,you:eqv(c.w,s),est:!!c.est,gate:"",needAr:false};
+  return trackMohe().filter(function(r){return catOf(r)===cat}).map(function(r){
+    var c=CATS.filter(function(x){return x.id===cat})[0], noCut=r[3]===null;
+    return {key:"ab|"+r[0]+"|"+r[1],path:"ab",country:r[0],ar:r[1],en:r[2],cut:r[3],type:noCut?"H":r[4],min:r[5],lit:r[6],noCut:noCut,cat:c,
+      you:noCut?s.hs:eqv(c.w,s),est:!!c.est&&!noCut,gate:s.hs<r[5]?t("gateHs",{n:r[5]}):"",needAr:false};
   });
 }
 function kuwaitRows(){
@@ -646,7 +792,7 @@ function rowTitle(r){
   return nmPath(r.ar)+(r.sec?" ("+t(r.sec)+")":"");
 }
 function rowSub(r){
-  if(r.path==="ab")return nm(r.ar)+(r.type==="H"?" · "+t("hsBased"):"")+(r.est?" · "+t("est"):"");
+  if(r.path==="ab")return abName(r)+(r.type==="H"&&!r.noCut?" · "+t("hsBased"):"")+(r.noCut?" · "+t("noCut"):"")+(r.est?" · "+t("est"):"");
   if(r.uni==="ku")return t("ku")+" · "+nm(r.college)+" · "+t("code")+" "+r.code+(r.type==="H"?" · "+t("hsBased"):"");
   return t("aasu")+" · "+t("est")+(r.mmi?" · "+t("mmi"):"");
 }
@@ -659,8 +805,9 @@ function drawOptions(){
   $("kwEnd").hidden=S.path!=="kw";
   if(S.path==="ab"){
     $("h4").textContent=t("abH4"); $("lead4").textContent=t("lead4Ab");
-    var catCount=countBy(MOHE,catOf);
-    html+='<div class="flabel">'+t("fCat")+'</div><div class="chips">'+CATS.map(function(c){return chip("cat",c.id,catName(c),S.cat===c.id,catCount[c.id])}).join("")+'</div>';
+    var catCount=countBy(trackMohe(),catOf);
+    if(!catCount[S.cat])S.cat=CATS.filter(function(c){return catCount[c.id]})[0].id;
+    html+='<div class="flabel">'+t("fCat")+'</div><div class="chips">'+CATS.filter(function(c){return catCount[c.id]}).map(function(c){return chip("cat",c.id,catName(c),S.cat===c.id,catCount[c.id])}).join("")+'</div>';
     rows=abroadRows(S.cat);
     var cc=countBy(rows,function(r){return r.country}), codes=Object.keys(COUNTRIES).filter(function(k){return cc[k]});
     if(S.country!=="all"&&!cc[S.country])S.country="all";
@@ -684,10 +831,11 @@ function drawOptions(){
     $("compare").innerHTML='<span>'+t("cmpKw")+'<br><span class="sm">'+t("track")+': '+t(S.track)+' · '+t("arabic")+': '+(isFinite(s.ar)?pct(s.ar):t("notEntered"))+'</span></span>'+
       (isFinite(s.ar)?"":'<button class="chip" id="addAr" type="button">'+t("addAr")+'</button>');
   }
-  if(S.q){var q=S.q.trim().toLowerCase(); rows=rows.filter(function(r){return (rowTitle(r)+" "+rowSub(r)+" "+r.ar).toLowerCase().indexOf(q)>-1})}
+  if(S.q){var q=S.q.trim().toLowerCase(); rows=rows.filter(function(r){return (rowTitle(r)+" "+rowSub(r)+" "+r.ar+" "+(r.en||"")).toLowerCase().indexOf(q)>-1})}
   var byStatus=S.path==="ab"&&["med","dent","phar"].indexOf(S.cat)>-1, RANK={ok:0,mid:1,no:2,na:3};
-  /* Medicine, Dentistry, Pharmacy: smallest gap first ("short by" least to most); others: highest cutoff first */
-  rows.sort(function(a,b){ return byStatus ? (RANK[rowStatus(a).cls]-RANK[rowStatus(b).cls]) || ((a.cut-a.you)-(b.cut-b.you)) : b.cut-a.cut; });
+  var rank=function(r){return r.gate?4:RANK[rowStatus(r).cls]}, key=function(r){return r.cut===null?r.min:r.cut};
+  /* Medicine, Dentistry, Pharmacy: smallest gap first ("short by" least to most), not eligible last; others: highest requirement first */
+  rows.sort(function(a,b){ return byStatus ? (rank(a)-rank(b)) || ((a.cut-a.you)-(b.cut-b.you)) : key(b)-key(a); });
   if(S.path==="ab")$("lead4").textContent=byStatus?t("lead4AbStatus"):t("lead4Ab");
   var focus=document.activeElement&&document.activeElement.id==="q", caret=focus?document.activeElement.selectionStart:0;
   $("filters").innerHTML=html;
@@ -698,7 +846,8 @@ function drawOptions(){
 function cardHtml(r){
   var st=rowStatus(r), on=S.picks.some(function(p){return p.key===r.key}), canPick=r.path==="ab";
   return '<div class="card'+(on?" sel":"")+'"><div><div class="t">'+rowTitleHtml(r)+'</div><div class="s">'+esc(rowSub(r))+'</div></div><span class="pill '+st.cls+'">'+st.txt+'</span>'+
-    '<div class="nums"><span>'+t("lowest")+' <b class="num">'+fx(r.cut)+'%</b></span><span>'+(r.type==="H"?t("yourHs"):t("yourRate"))+' <b>'+(isFinite(r.you)?pct(r.you):"—")+'</b></span><span class="gap '+st.cls+'">'+(r.gate?esc(r.gate):gapTxt(r.you,r.cut))+'</span>'+
+    '<div class="nums">'+(r.cut!==null?'<span>'+t("lowest")+' <b class="num">'+fx(r.cut)+'%</b></span>':"")+(r.path==="ab"?'<span>'+t("minApply")+' <b class="num">'+r.min+'%</b></span>':"")+
+    '<span>'+(r.type==="H"?t("yourHs"):t("yourRate"))+' <b>'+(isFinite(r.you)?pct(r.you):"—")+'</b></span><span class="gap '+st.cls+'">'+(r.gate?esc(r.gate):gapTxt(r.you,r.cut===null?r.min:r.cut))+'</span>'+
     (canPick?'<button type="button" class="pick" data-key="'+esc(r.key)+'" aria-pressed="'+on+'">'+(on?t("added"):t("add"))+'</button>':"")+'</div></div>';
 }
 function allAbroadRows(){ var out=[]; CATS.forEach(function(c){out=out.concat(abroadRows(c.id))}); return out; }
@@ -717,15 +866,15 @@ function drawSummary(){
   $("sum").innerHTML=[[t("sumHs"),pct(s.hs)],[t("sumMath"),pct(s.math)],[t("sumEng"),'<span class="num">'+esc(s.e.label)+'</span>'],[t("sumDest"),esc(t("abT"))]]
     .map(function(x){return '<div><span>'+x[0]+'</span><b>'+x[1]+'</b></div>'}).join("");
   drawPicked();
-  var names={}; MOHE.forEach(function(r){names[nm(r[1])]=1});
+  var names={}; trackMohe().forEach(function(r){names[LANG==="en"?r[2]:r[1]]=1});
   $("majorsList").innerHTML=Object.keys(names).map(function(n){return '<option value="'+esc(n)+'">'}).join("");
   var iv=$("interest").value;
-  if((!iv||iv===S.autoVal)&&S.picks.length){S.autoVal=nm(S.picks[0].ar);$("interest").value=S.autoVal;}
+  if((!iv||iv===S.autoVal)&&S.picks.length){S.autoVal=abName(S.picks[0]);$("interest").value=S.autoVal;}
   updateMessage();
 }
 function drawPicked(){
   $("picked").innerHTML=S.picks.length?S.picks.map(function(p,i){var st=rowStatus(p);
-    return '<div class="row"><span class="pill '+st.cls+'">'+st.txt+'</span><div><b>'+esc(nm(p.ar))+'</b><div style="font-size:12.5px;color:var(--muted)">'+rowTitleHtml(p)+' · '+t("lowest")+' <span class="num">'+fx(p.cut)+'%</span></div></div><button class="x" data-rm="'+i+'" aria-label="×">×</button></div>'}).join("")
+    return '<div class="row"><span class="pill '+st.cls+'">'+st.txt+'</span><div><b>'+esc(abName(p))+'</b><div style="font-size:12.5px;color:var(--muted)">'+rowTitleHtml(p)+' · '+(p.cut!==null?t("lowest")+' <span class="num">'+fx(p.cut)+'%</span>':t("minApply")+' <span class="num">'+p.min+'%</span>')+'</div></div><button class="x" data-rm="'+i+'" aria-label="×">×</button></div>'}).join("")
     :'<div class="empty" style="margin-top:0">'+t("noPicks")+'</div>';
 }
 function uniq(a){return a.filter(function(x,i){return a.indexOf(x)===i})}
@@ -742,7 +891,7 @@ function buildMessage(){
   if(S.picks.length){
     L.push("• "+t("waPicks")+":");
     S.picks.forEach(function(p,i){
-      L.push("   "+(i+1)+") "+nm(p.ar)+" — "+FLAGS[p.country]+" "+ctry(p.country)+" ("+t("waLowest")+" "+fx(p.cut)+"% · "+(p.type==="H"?t("waMineHs"):p.est?t("waMineEst"):t("waMine"))+" "+f2(p.you)+"%)");
+      L.push("   "+(i+1)+") "+abName(p)+" — "+FLAGS[p.country]+" "+ctry(p.country)+" ("+(p.cut!==null?t("waLowest")+" "+fx(p.cut):t("waMin")+" "+p.min)+"% · "+(p.type==="H"?t("waMineHs"):p.est?t("waMineEst"):t("waMine"))+" "+f2(p.you)+"%)");
     });
   }
   L.push("• "+t("waInterest")+": "+($("interest").value.trim()||t("waUndecided")));
