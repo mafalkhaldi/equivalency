@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NavitaEdu Major Finder · مستشار التخصص</title>
 <meta name="description" content="مستشار التخصص من نافيتا: دخّل نسبة الثانوية واختبارات القدرات واعرف معدلك المكافئ والتخصصات المتاحة لك في جامعة الكويت وجامعة عبدالله السالم والبعثات الخارجية — بيانات رسمية 2026/2027.">
-<meta name="theme-color" content="#203355">
+<meta name="theme-color" content="#1A3659">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKDECKPX5D"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BKDECKPX5D');</script>
@@ -17,18 +17,20 @@
 <meta property="og:locale:alternate" content="en_US">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#203355; --navy-2:#2c4673; --ink:#17212c; --muted:#5b6876; --line:#dfe5ec; --paper:#f2f5f8; --card:#fff;
-  --brand:#f14e1c; --brand-soft:#fdece5;
+  --navy:#1A3659; --navy-2:#24497A; --ink:#1C1C1C; --muted:#5E636B; --grey:#8A8F98; --line:#dfe5ec; --paper:#f2f5f8; --card:#fff;
+  --brand:#EA692D; --brand-soft:#FCEEE6;
   --ok:#17784a; --ok-bg:#e3f3ea; --mid:#9a6a0c; --mid-bg:#fbf0d7; --no:#a33a3a; --no-bg:#f7e5e5;
   --r:16px; --shadow:0 1px 2px rgba(16,40,68,.05),0 10px 30px rgba(16,40,68,.07);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans Arabic","IBM Plex Sans",-apple-system,"Segoe UI",Tahoma,sans-serif;font-size:16px;line-height:1.6}
-html[lang=en] body{font-family:"IBM Plex Sans","IBM Plex Sans Arabic",-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Cairo",-apple-system,"Segoe UI",Tahoma,sans-serif;font-size:16px;line-height:1.6}
+html[lang=en] body{font-family:"Poppins","Cairo",-apple-system,"Segoe UI",sans-serif}
+html[lang=en] h1,html[lang=en] h2,html[lang=en] h4,html[lang=en] .btn,html[lang=en] .eq .v,html[lang=en] .card .t{font-family:"Inter","Poppins",sans-serif}
+input,select,textarea{font-family:inherit}
 .num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
 .wrap{max-width:780px;margin:0 auto;padding:16px 14px 120px}
 button{font-family:inherit}
@@ -36,7 +38,7 @@ button{font-family:inherit}
 
 /* Header */
 .hero{background:linear-gradient(155deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--r);padding:20px 20px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;inset-inline-start:-50px;bottom:-60px;width:180px;height:180px;border:2px solid rgba(241,78,28,.35);border-radius:50%;pointer-events:none}
+.hero:after{content:"";position:absolute;inset-inline-start:-50px;bottom:-60px;width:180px;height:180px;border:2px solid rgba(234,105,45,.35);border-radius:50%;pointer-events:none}
 .hero .brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .hero .brand .logo{display:block;height:48px;line-height:0}
 .hero .brand .logo svg{height:100%;width:auto}
@@ -71,14 +73,14 @@ button{font-family:inherit}
 .field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
 .field .hint{font-weight:400;color:var(--muted);font-size:12.5px}
 .field input,.field select{width:100%;padding:12px 13px;font-size:17px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-family:inherit;-webkit-appearance:none;appearance:none}
-.field input:focus,.field select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(241,78,28,.15)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(234,105,45,.15)}
 .field.err input,.field.err select{border-color:var(--no)}
 .field .msg{display:none;color:var(--no);font-size:12.5px;margin-top:5px}
 .field.err .msg{display:block}
 .seg{display:flex;background:var(--paper);border-radius:12px;padding:4px;gap:4px;margin-bottom:8px}
 .seg button{flex:1;border:0;background:none;padding:8px 6px;border-radius:9px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer}
 .seg button[aria-pressed="true"]{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.seg button:focus-visible,.chip:focus-visible,.btn:focus-visible,.dest:focus-visible,.pick:focus-visible,.lang:focus-visible{outline:3px solid rgba(241,78,28,.5);outline-offset:2px}
+.seg button:focus-visible,.chip:focus-visible,.btn:focus-visible,.dest:focus-visible,.pick:focus-visible,.lang:focus-visible{outline:3px solid rgba(234,105,45,.5);outline-offset:2px}
 
 /* Buttons */
 .actions{display:flex;gap:10px;margin-top:20px;justify-content:space-between;flex-wrap:wrap}
@@ -91,7 +93,18 @@ button{font-family:inherit}
 .btn.wa.disabled{opacity:.45;pointer-events:none}
 
 /* Rates */
-.eqgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.eqgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.eqwrap{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:14px;background:#fbfcfd}
+.eqwrap summary{cursor:pointer;font-weight:700;color:var(--navy);display:flex;flex-direction:column;gap:2px;list-style:none}
+.eqwrap summary::-webkit-details-marker{display:none}
+.eqwrap summary:after{content:"▾";float:inline-end;color:var(--muted)}
+.eqwrap[open] summary:after{content:"▴"}
+.eqwrap summary .sm{font-size:12.5px;font-weight:500;color:var(--muted)}
+.eqwrap .eqgrid{margin-top:12px}
+.eqwrap .eq{padding:10px 12px}
+.eqwrap .eq .v{font-size:24px}
+.more{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.more .btn{padding:10px 16px;font-size:14px}
 .eq{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fbfcfd;position:relative;overflow:hidden}
 .eq:before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:4px;background:var(--brand)}
 .eq.hs:before{background:var(--navy)}
@@ -111,7 +124,7 @@ button{font-family:inherit}
 .dests{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .dest{border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:20px 16px;text-align:start;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;color:var(--ink)}
 .dest:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:var(--shadow)}
-.dest[aria-pressed="true"]{border-color:var(--brand);box-shadow:0 0 0 4px rgba(241,78,28,.15)}
+.dest[aria-pressed="true"]{border-color:var(--brand);box-shadow:0 0 0 4px rgba(234,105,45,.15)}
 .dest .ic{font-size:30px}
 .dest b{display:block;font-size:19px;margin-top:6px}
 .dest span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
@@ -185,6 +198,23 @@ footer a{color:var(--navy)}
   .eq .v{font-size:28px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.h4row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.h4row h2{margin:0}
+.applyTop{padding:10px 22px;font-size:15.5px;flex:0 0 auto;background:var(--brand)!important;box-shadow:0 4px 14px rgba(234,105,45,.3)}
+/* compact layout (v7): shorter cards and GPA tiles so students reach the bottom faster */
+.eqwrap .eqgrid{grid-template-columns:repeat(3,1fr);gap:8px}
+.eqwrap .eq{padding:8px 10px;border-radius:12px}
+.eqwrap .eq .k{font-size:12px;line-height:1.3}
+.eqwrap .eq .v{font-size:20px;margin-top:2px}
+.eqwrap .eq .v small{font-size:12px}
+.eqwrap .eq .use,.eqwrap .eq .warn{font-size:11px}
+.list{gap:8px}
+.card{padding:9px 12px;gap:2px 10px;border-radius:12px}
+.card .t{font-size:14.5px;line-height:1.35}
+.card .s{font-size:12px;line-height:1.35}
+.card .nums{font-size:12px;gap:2px 10px}
+.card .pick{padding:5px 10px;font-size:12.5px}
+@media (max-width:560px){.eqwrap .eqgrid{grid-template-columns:repeat(2,1fr)}.eqwrap .eq .v{font-size:19px}}
 </style>
 </head>
 <body>
@@ -247,27 +277,23 @@ footer a{color:var(--navy)}
   <div class="actions"><button class="btn ghost" data-back data-t="back"></button></div>
 </section>
 
-<!-- STEP 3: rates -->
-<section class="panel step" data-step="3" aria-labelledby="h3">
-  <h2 id="h3" data-t="s3h"></h2>
-  <p class="lead" id="lead3"></p>
-  <div class="kueq" id="arBox" hidden>
-    <div class="field" id="f-ar">
-      <label for="ar"><span data-t="arLabel"></span> <span class="hint">(%)</span></label>
-      <input id="ar" type="number" inputmode="decimal" min="0" max="100" step="0.01" placeholder="85">
-      <div class="msg" data-t="errRange"></div>
-    </div>
-    <div class="hint" style="font-size:12.5px;color:var(--muted);margin-top:6px" data-t="arHint"></div>
-  </div>
-  <div class="eqgrid" id="eqgrid" style="margin-top:14px"></div>
-  <div class="official" id="official3"></div>
-  <div class="actions"><button class="btn ghost" data-back data-t="back"></button><button class="btn primary" id="go4" data-t="showMajors"></button></div>
-</section>
-
 <!-- STEP 4: programs -->
-<section class="panel step" data-step="4" aria-labelledby="h4">
-  <h2 id="h4"></h2>
+<section class="panel step" data-step="3" aria-labelledby="h4">
+  <div class="h4row"><h2 id="h4"></h2><a class="btn primary applyTop" id="applyTop" href="#" target="_blank" rel="noopener" hidden data-t="applyTop"></a></div>
   <p class="lead" id="lead4"></p>
+  <details class="eqwrap" id="eqwrap" open>
+    <summary><span data-t="s3h"></span><span class="sm" id="lead3"></span></summary>
+    <div class="kueq" id="arBox" hidden>
+      <div class="field" id="f-ar">
+        <label for="ar"><span data-t="arLabel"></span> <span class="hint">(%)</span></label>
+        <input id="ar" type="number" inputmode="decimal" min="0" max="100" step="0.01" placeholder="85">
+        <div class="msg" data-t="errRange"></div>
+      </div>
+      <div class="hint" style="font-size:12.5px;color:var(--muted);margin-top:6px" data-t="arHint"></div>
+    </div>
+    <div class="eqgrid" id="eqgrid"></div>
+    <div class="official" id="official3"></div>
+  </details>
   <div id="filters"></div>
   <div class="compare" id="compare"></div>
   <div class="legend"><span class="pill ok" data-t="lgOk"></span><span class="pill mid" data-t="lgMid"></span><span class="pill no" data-t="lgNo"></span></div>
@@ -280,7 +306,7 @@ footer a{color:var(--navy)}
 </section>
 
 <!-- STEP 5: apply (abroad only) -->
-<section class="panel step" data-step="5" aria-labelledby="h5">
+<section class="panel step" data-step="4" aria-labelledby="h5">
   <h2 id="h5" data-t="s5h"></h2>
   <p class="lead" data-t="s5lead"></p>
   <div class="sum" id="sum"></div>
@@ -313,7 +339,7 @@ footer a{color:var(--navy)}
 
 <footer>
   <p><b data-t="howTitle"></b> <span data-t="howTxt"></span></p>
-  <p><b data-t="srcTitle"></b> <a href="https://www.mohe.edu.kw/site/assets/images/Uploads/202671114559.pdf" target="_blank" rel="noopener" data-t="srcMohe"></a> · <a href="https://www.ku.edu.kw/sites/default/files/2026-06/ku_colleges_rules%20%D8%B9%D8%B1%D8%A8%D9%8A.pdf" target="_blank" rel="noopener" data-t="srcKuW"></a> · <a href="https://www.ku.edu.kw/sites/default/files/2026-07/%D8%A7%D9%84%D8%AD%D8%AF%D9%88%D8%AF%20%D8%A7%D9%84%D8%AF%D9%86%D9%8A%D8%A7%20%D9%83%D9%88%D9%8A%D8%AA%D9%8A%D9%8A%D9%86%20%D9%81%D8%B5%D9%84%20%D8%A7%D9%94%D9%88%D9%8426-27.pdf" target="_blank" rel="noopener" data-t="srcKuR"></a> · <a href="https://aasu.edu.kw/news/View/83" target="_blank" rel="noopener" data-t="srcAasu"></a></p>
+  <p><b data-t="srcTitle"></b> <a href="https://www.mohe.edu.kw/site/assets/images/Uploads/202671114559.pdf" target="_blank" rel="noopener" data-t="srcMohe"></a> · <a href="https://www.ku.edu.kw/sites/default/files/2026-06/ku_colleges_rules%20%D8%B9%D8%B1%D8%A8%D9%8A.pdf" target="_blank" rel="noopener" data-t="srcKuW"></a> · <a href="https://www.ku.edu.kw/sites/default/files/2026-07/%D8%A7%D9%84%D8%AD%D8%AF%D9%88%D8%AF%20%D8%A7%D9%84%D8%AF%D9%86%D9%8A%D8%A7%20%D9%83%D9%88%D9%8A%D8%AA%D9%8A%D9%8A%D9%86%20%D9%81%D8%B5%D9%84%20%D8%A7%D9%94%D9%88%D9%8426-27.pdf" target="_blank" rel="noopener" data-t="srcKuR"></a> · <a href="https://aasu.edu.kw/news/View/83" target="_blank" rel="noopener" data-t="srcAasu"></a> · <a href="https://www.paaet.edu.kw" target="_blank" rel="noopener" data-t="srcPaaet"></a> · <a href="https://x.com/PUC_KW/status/2071891338056900713" target="_blank" rel="noopener" data-t="srcPuc"></a></p>
   <p data-t="estNote"></p>
 </footer>
 </div>
@@ -500,6 +526,13 @@ var AASU=[
 ["دكتور في الطب",92.27,""],["هندسة الأمن السيبراني",83.59,""],["الهندسة الطبية الحيوية والآلات الدقيقة",78.43,""],["هندسة أنظمة الحاسوب",72.63,""],["هندسة البرمجيات",70.77,""],["هندسة أنظمة الطاقة",69.92,""],["هندسة الروبوتات والميكاترونكس",67.95,""],["علوم البيانات والذكاء الاصطناعي",67.83,""],["ريادة الأعمال والابتكار",66.4,"sci"],["ريادة الأعمال والابتكار",65.67,"lit"],["إدارة سلسلة التوريد والخدمات اللوجستية",64.43,""],["التسويق الرقمي",59.23,""],["هندسة وعلوم المواد",54.59,""],["الهندسة الزراعية والموارد الحيوية",53.95,""],["الهندسة البيئية والاستدامة",52.85,""]
 ];
 
+/* PAAET minimum admission rates 2026/27 (Kuwaiti, semester 1 & 2) — [gender M/F, college, degree bach/dip/inst, program, S1, S2, track sci/lit/'', test+interview 1/0] */
+var PAAET=[["M","كليه التربيه الاساسيه","bach","التربيه الاسلاميه",87.32,83.58,"",0],["M","كليه التربيه الاساسيه","bach","اللغه العربيه",81.84,79.52,"",0],["M","كليه التربيه الاساسيه","bach","العلوم",82.37,76.28,"sci",0],["M","كليه التربيه الاساسيه","bach","الرياضيات",81.96,74.84,"sci",0],["M","كليه التربيه الاساسيه","bach","التربيه الفنيه",88.1,84.74,"",0],["M","كليه التربيه الاساسيه","bach","التربيه الموسيقيه",74.41,71.48,"",0],["M","كليه التربيه الاساسيه","bach","التصميم الداخلى",83.01,80.73,"",0],["M","كليه التربيه الاساسيه","bach","الكهرباء",82.49,77.4,"sci",0],["M","كليه التربيه الاساسيه","bach","دراسات المعلومات",75.33,72.54,"",0],["M","كليه التربيه الاساسيه","bach","تكنولوجيا التعليم",73.86,71.7,"",0],["M","كليه التربيه الاساسيه","bach","لغة انجليزية - للمتوسط والثانوية",70.0,70.0,"",1],["M","كليه التربيه الاساسيه","bach","معلم حاسوب",78.11,74.58,"sci",0],["M","كليه التربيه الاساسيه","bach","لغة فرنسية",70.0,null,"",1],["M","كليه الدراسات التجاريه","dip","المحاسبه",64.12,60.0,"",0],["M","كليه الدراسات التجاريه","dip","التأمين",60.0,60.0,"",0],["M","كليه الدراسات التجاريه","dip","البنوك",60.0,60.0,"",0],["M","كليه الدراسات التجاريه","dip","الحاسب الالى",60.0,60.0,"sci",0],["M","كليه الدراسات التجاريه","dip","قانون",69.72,68.38,"",0],["M","كليه الدراسات التجاريه","dip","نظم المعلومات الادارية",66.72,60.0,"",0],["M","كليه الدراسات التجاريه","dip","الادارة اللوجستيه",61.32,60.0,"",0],["M","كليه الدراسات التجاريه","dip","إدارة الموارد البشرية",70.05,65.88,"",0],["M","كليه الدراسات التجاريه","dip","التسويق",60.0,60.0,"",0],["M","كليه الدراسات التجاريه","dip","الإدارة المالية",60.0,60.0,"",0],["M","كليه الدراسات التجاريه","dip","التمويل والتقييم العقاري",60.0,60.0,"",0],["M","كليه الدراسات التكنولوجيه","dip","ميكانيكا قوى محركه",84.09,78.0,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","ميكانيكا سيارات",65.0,65.0,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","ميكانيكا تبريد و تكييف الهواء",65.0,65.0,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","ميكانيكا هندسه بحريه",73.71,69.7,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا اللحام",67.19,65.0,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا الالات الكهربائيه",74.22,71.47,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا نقل وتوزيع الطاقه الكهربائيه",69.7,67.39,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا الطاقة المتجددة",70.92,68.06,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسة الإتصالات",74.28,71.3,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسة الكترونيات صناعية",70.76,68.41,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسه الكترونيات معدات طبيه حيويه",72.99,68.91,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","انشاء مباني",65.19,65.0,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","طرق",65.0,65.0,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","مساحه",65.0,65.0,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا تشغيل المصافى",96.9,95.58,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا الصناعات الكيميائيه",83.9,74.99,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا مختبرات كيمياء تطبيقيه",69.2,66.84,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسة الكمبيوتر",81.11,76.91,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسه بترول - استكشاف وتطوير",80.76,78.11,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسه بترول - انتاج وتصدير",88.2,82.98,"sci",0],["M","كليه الدراسات التكنولوجيه","dip","تكنولوجيا كفاءة الطاقة",74.32,72.25,"sci",0],["M","كليه العلوم الصحيه","dip","السجلات الطبيه",70.0,70.0,"sci",0],["M","كليه العلوم الصحيه","dip","العلوم الصيدلانيه",70.0,null,"sci",1],["M","كليه العلوم الصحيه","dip","تكنولوجيا المختبرات الطبيه",70.0,70.0,"sci",1],["M","كليه العلوم الصحيه","dip","علوم الاغذيه",70.0,null,"sci",0],["M","كليه العلوم الصحيه","dip","فني طوارىء طبيه",70.0,70.0,"sci",1],["M","كليه العلوم الصحيه","bach","الصحة الصناعية والسلامة المهنية",81.21,null,"sci",0],["M","كليه العلوم الصحيه","dip","علوم التغذية",70.0,null,"sci",0],["M","كليه التمريض","bach","تمريض",70.0,70.0,"sci",1],["M","كليه التمريض","bach","التمريض المدرسى",70.0,70.0,"sci",1],["M","كليه التمريض","dip","التمريض العام",70.0,70.0,"sci",1],["M","دورات تدريبيه خاصه - فنى","inst","تفتيش عمل",70.5,null,"",1],["M","دورات تدريبيه خاصه - فنى","inst","تفتيش خدمات بلديه - نظافه",65.0,null,"",1],["M","دورات تدريبيه خاصه - فنى","inst","تحضير مختبر العلوم",59.56,50.0,"",0],["M","دورات تدريبيه خاصه - فنى","inst","تحفيظ قران كريم",55.0,55.0,"",1],["M","دورات تدريبيه خاصه - فنى","inst","بيطرة - دورات تدريبية خاصة",71.03,null,"",0],["M","معهد العالي للاتصالات والملاحة","inst","معهد عالى للاتصالات والملاحه",81.83,75.67,"sci",0],["M","معهد العالي للاتصالات والملاحة","inst","معهد عالى للاتصالات والملاحه",79.63,75.87,"lit",0],["M","معهد التمريض","inst","تثقيف صحي",70.32,null,"",0],["M","معهد التمريض","inst","تعقيم",75.72,null,"",0],["M","معهد التمريض","inst","فاصد دم",60.0,null,"sci",1],["M","المعهد العالى للطاقة","inst","المعهد العالى للطاقه",64.4,55.0,"sci",0],["M","معهد التدريب الانشائى","inst","المعهد الانشائي - تمهيدي",69.4,60.0,"",0],["M","المعهد الصناعى - صباح السالم","inst","فحص مركبات",74.07,null,"sci",0],["M","المعهد الصناعى - صباح السالم","inst","معاين فني",66.48,null,"sci",0],["M","المعهد الصناعى - الشويخ","inst","الفنون التطبيقية والتصميم",66.28,55.0,"",0],["M","المعهد العالى للخدمات الإدارية","inst","خدمات اجتماعية",50.0,50.0,"",0],["M","المعهد العالى للخدمات الإدارية","inst","سكرتاريه",55.0,55.0,"",0],["M","المعهد العالى للخدمات الإدارية","inst","خدمات اداريه",65.2,55.0,"",0],["M","المعهد العالى للخدمات الإدارية","inst","خدمات فندقيه",50.0,50.0,"",0],["M","المعهد العالى للخدمات الإدارية","inst","تنفيذ معاملات مراكز",50.0,50.0,"",1],["M","المعهد العالى للخدمات الإدارية","inst","مفتش مصنفات فنية",50.0,50.0,"",0],["F","كليه التربيه الاساسيه","bach","اللغه العربيه",88.65,87.4,"",0],["F","كليه التربيه الاساسيه","bach","الرياضيات",85.28,82.23,"sci",0],["F","كليه التربيه الاساسيه","bach","التربيه الموسيقيه",83.34,81.48,"",0],["F","كليه التربيه الاساسيه","bach","التصميم الداخلى",92.26,89.31,"",0],["F","كليه التربيه الاساسيه","bach","الكهرباء",91.08,88.1,"sci",0],["F","كليه التربيه الاساسيه","bach","دراسات المعلومات",86.58,84.34,"",0],["F","كليه التربيه الاساسيه","bach","تكنولوجيا التعليم",83.4,82.23,"",0],["F","كليه التربيه الاساسيه","bach","اللغه الانجليزيه - مرحلة ابتدائية",75.0,75.0,"",1],["F","كليه التربيه الاساسيه","bach","معلم حاسوب",87.77,86.19,"sci",0],["F","كليه التربيه الاساسيه","bach","لغة فرنسية",75.0,null,"",1],["F","كليه التربيه الاساسيه","bach","الاقتصاد المنزلى",91.59,89.15,"",0],["F","كليه الدراسات التجاريه","dip","المحاسبه",65.0,65.0,"",0],["F","كليه الدراسات التجاريه","dip","التأمين",65.0,65.0,"",0],["F","كليه الدراسات التجاريه","dip","البنوك",65.0,65.0,"",0],["F","كليه الدراسات التجاريه","dip","الحاسب الالى",63.99,60.0,"sci",0],["F","كليه الدراسات التجاريه","dip","قانون",72.48,68.48,"",0],["F","كليه الدراسات التجاريه","dip","نظم المعلومات الادارية",75.18,69.69,"",0],["F","كليه الدراسات التجاريه","dip","الادارة اللوجستيه",67.21,65.0,"",0],["F","كليه الدراسات التجاريه","dip","إدارة الموارد البشرية",79.22,76.28,"",0],["F","كليه الدراسات التجاريه","dip","التسويق",73.7,66.71,"",0],["F","كليه الدراسات التجاريه","dip","الإدارة المالية",68.97,65.0,"",0],["F","كليه الدراسات التجاريه","dip","التمويل والتقييم العقاري",65.0,65.0,"",0],["F","كليه العلوم الصحيه","dip","السجلات الطبيه",70.0,70.0,"sci",0],["F","كليه العلوم الصحيه","dip","العلوم الصيدلانيه",70.0,null,"sci",1],["F","كليه العلوم الصحيه","dip","تكنولوجيا المختبرات الطبيه",70.0,70.0,"sci",1],["F","كليه العلوم الصحيه","dip","علوم الاغذيه",80.43,null,"sci",0],["F","كليه العلوم الصحيه","dip","فني طوارىء طبيه",70.0,70.0,"sci",1],["F","كليه العلوم الصحيه","dip","فني عيادة طب أسنان",70.0,null,"sci",1],["F","كليه العلوم الصحيه","dip","فني صحة الفم والاسنان (سنوي)",70.0,null,"sci",1],["F","كليه العلوم الصحيه","bach","علوم البيئة التطبيقية",81.81,null,"sci",0],["F","كليه العلوم الصحيه","dip","علوم التغذية",83.34,null,"sci",0],["F","كليه الدراسات التكنولوجيه","dip","تكنولوجيا الطاقة المتجددة",73.53,70.26,"sci",0],["F","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسة الإتصالات",78.0,75.21,"sci",0],["F","كليه الدراسات التكنولوجيه","dip","تكنولوجيا مختبرات فيزياء تطبيقيه",69.69,68.98,"sci",0],["F","كليه الدراسات التكنولوجيه","dip","تكنولوجيا مختبرات كيمياء تطبيقيه",74.31,69.77,"sci",0],["F","كليه الدراسات التكنولوجيه","dip","تكنولوجيا هندسة الكمبيوتر",78.34,76.4,"sci",0],["F","كليه التمريض","bach","تمريض",70.0,70.0,"sci",1],["F","كليه التمريض","bach","التمريض المدرسى",70.0,70.0,"sci",1],["F","كليه التمريض","dip","التمريض العام",70.0,70.0,"sci",1],["F","دورات تدريبيه خاصه - فنى","inst","تفتيش عمل",60.0,null,"",1],["F","دورات تدريبيه خاصه - فنى","inst","تفتيش خدمات بلديه - نظافه",65.0,null,"",1],["F","دورات تدريبيه خاصه - فنى","inst","تحضير مختبر العلوم",73.87,69.15,"",0],["F","دورات تدريبيه خاصه - فنى","inst","تحفيظ قران كريم",55.0,55.0,"",1],["F","معهد العالي للاتصالات والملاحة","inst","معهد عالى للاتصالات والملاحه",63.93,60.0,"sci",0],["F","معهد العالي للاتصالات والملاحة","inst","معهد عالى للاتصالات والملاحه",70.0,70.0,"lit",0],["F","معهد التمريض","inst","تثقيف صحي",73.96,null,"",0],["F","معهد التمريض","inst","تعقيم",79.05,null,"",0],["F","معهد التمريض","inst","فاصد دم",60.0,null,"sci",1],["F","المعهد العالى للخدمات الإدارية","inst","خدمات اجتماعية",64.09,56.59,"",0],["F","المعهد العالى للخدمات الإدارية","inst","سكرتاريه",65.2,55.4,"",0],["F","المعهد العالى للخدمات الإدارية","inst","خدمات اداريه",66.27,61.32,"",0],["F","المعهد العالى للخدمات الإدارية","inst","خدمات فندقيه",56.41,50.0,"",0],["F","المعهد العالى للخدمات الإدارية","inst","تنفيذ معاملات مراكز",50.0,50.0,"",1],["F","المعهد العالى للخدمات الإدارية","inst","مفتش مصنفات فنية",50.0,50.0,"",0]];
+
+/* Private Universities Council — internal scholarships 2026/27, semester 1 (official PUC posters, 30 Jun 2026). [uni, degree bach/dip, ar, en, min% sci, min% arts|null=science only] */
+var PUC_UNI=[["auk","الجامعة الأمريكية في الكويت","American University of Kuwait (AUK)"],["kilaw","كلية القانون الكويتية العالمية","Kuwait International Law School (KILAW)"],["kcst","كلية الكويت للعلوم والتكنولوجيا","Kuwait College of Science & Technology (KCST)"],["aum","جامعة الشرق الأوسط الأمريكية","American University of the Middle East (AUM)"],["au","الجامعة الأسترالية","Australian University (AU)"],["aiu","الجامعة الأمريكية الدولية","American International University (AIU)"],["gust","جامعة الخليج للعلوم والتكنولوجيا","Gulf University for Science & Technology (GUST)"],["acm","كلية الشرق الأوسط الأمريكية","American College of the Middle East (ACM)"],["boxhill","كلية بوكسهل الكويت","Box Hill College Kuwait"],["cta","كلية التكنولوجيا والطيران","College of Technology & Aviation"],["ktc","كلية الكويت التقنية","Kuwait Technical College"],["cck","كلية الجونكوين الكندية في الكويت","Algonquin / Canadian College of Kuwait"]];
+var PUC=[["auk","bach","هندسة كهربائية","Electrical Engineering",90,null],["auk","bach","هندسة الكمبيوتر","Computer Engineering",85,null],["auk","bach","هندسة نظم","Systems Engineering",85,null],["auk","bach","علوم كمبيوتر","Computer Science",75,null],["auk","bach","تصميم جرافيكي","Graphic Design",80,80],["auk","bach","محاسبة","Accounting",80,80],["auk","bach","إدارة","Management",78,80],["auk","bach","تمويل","Finance",78,80],["auk","bach","اقتصاد","Economics",78,80],["auk","bach","علوم اجتماعية وسلوكية","Social & Behavioral Sciences",78,80],["auk","bach","العلاقات الدولية","International Relations",78,80],["auk","bach","وسائل إعلامية","Media",85,85],["auk","bach","لغة إنجليزية","English Language",78,80],["auk","bach","نظم معلومات","Information Systems",75,78],["auk","bach","إدارة موارد بشرية","Human Resources Management",78,80],["kilaw","bach","ليسانس حقوق","Bachelor of Law (LLB)",90,90],["kcst","bach","هندسة الإلكترونيات والاتصالات","Electronics & Communications Engineering",90,null],["kcst","bach","هندسة الكمبيوتر","Computer Engineering",85,null],["kcst","bach","علوم كمبيوتر","Computer Science",75,null],["aum","bach","هندسة كمبيوتر","Computer Engineering",85,null],["aum","bach","محاسبة","Accounting",80,80],["aum","bach","هندسة كهربائية","Electrical Engineering",90,null],["aum","bach","هندسة معمارية","Architectural Engineering",90,null],["aum","bach","هندسة مدنية","Civil Engineering",90,null],["aum","bach","إدارة موارد بشرية","Human Resources Management",78,80],["aum","bach","نظم وتقنية المعلومات","Information Systems & Technology",75,null],["aum","bach","إدارة نظم معلومات","Management Information Systems",75,78],["aum","bach","تمويل","Finance",78,80],["aum","bach","علوم وتطبيقات الذكاء الاصطناعي","Artificial Intelligence Science & Applications",78,80],["au","bach","البنوك والتمويل","Banking & Finance",78,80],["au","bach","تشغيل الطيران والمطارات","Aviation & Airport Operations",78,80],["au","bach","إدارة المناسبات","Events Management",78,80],["au","bach","إدارة نظم المعلومات","Management Information Systems",75,78],["aiu","bach","هندسة مدنية","Civil Engineering",90,null],["aiu","bach","التكنولوجيا الحيوية","Biotechnology",78,null],["aiu","bach","إدارة","Management",78,80],["aiu","bach","هندسة كهربائية وكمبيوتر","Electrical & Computer Engineering",90,null],["aiu","bach","علوم حاسوب","Computer Science",75,null],["aiu","bach","محاسبة","Accounting",80,80],["aiu","bach","إدارة سلسلة الموارد اللوجستية","Supply Chain & Logistics Management",78,80],["aiu","bach","هندسة طبية","Biomedical Engineering",90,null],["aiu","bach","تمويل","Finance",78,80],["aiu","bach","تربية رياضيات","Mathematics Education",85,null],["aiu","bach","تربية لغة إنجليزية","English Language Education",85,85],["aiu","bach","ريادة الأعمال","Entrepreneurship",78,80],["aiu","bach","تصميم جرافيكي","Graphic Design",80,80],["aiu","bach","تصميم داخلي","Interior Design",80,80],["gust","bach","هندسة كهربائية","Electrical Engineering",90,null],["gust","bach","إدارة أعمال بتشعيباتها","Business Administration (all majors)",78,80],["gust","bach","تمويل","Finance",78,80],["gust","bach","هندسة الكمبيوتر","Computer Engineering",85,null],["gust","bach","إدارة نظم معلومات","Management Information Systems",75,78],["gust","bach","لغة إنجليزية","English Language",78,80],["gust","bach","علوم كمبيوتر","Computer Science",75,null],["gust","bach","محاسبة","Accounting",80,80],["gust","bach","إعلام","Mass Communication",85,85],["au","dip","هندسة الكهرباء والإلكترونيات","Electrical & Electronics Engineering",77,null],["au","dip","هندسة مدنية","Civil Engineering",77,null],["au","dip","إدارة موارد بشرية","Human Resources Management",70,70],["au","dip","الخدمات اللوجستية","Logistics",70,70],["au","dip","علوم البحرية","Marine Science",70,null],["au","dip","المحاسبة","Accounting",70,70],["au","dip","هندسة صيانة طائرات بتشعيباتها","Aircraft Maintenance Engineering (all tracks)",80,null],["au","dip","إدارة أعمال","Business Administration",70,70],["au","dip","مراقبة الملاحة الجوية","Air Traffic Control",70,70],["acm","dip","تكنولوجيا الهندسة الكهربائية","Electrical Engineering Technology",77,null],["acm","dip","تكنولوجيا المعلومات","Information Technology",70,null],["acm","dip","تكنولوجيا الهندسة المدنية","Civil Engineering Technology",77,null],["acm","dip","تكنولوجيا هندسة الكمبيوتر","Computer Engineering Technology",70,null],["acm","dip","إدارة أعمال بتشعيباتها","Business Administration (all majors)",70,70],["boxhill","dip","إدارة أعمال","Business Administration",70,70],["boxhill","dip","تطوير المواقع الإلكترونية","Web Development",70,null],["boxhill","dip","تصميم جرافيكي","Graphic Design",75,75],["boxhill","dip","تصميم داخلي وديكور","Interior Design & Decoration",75,75],["boxhill","dip","خدمات مصرفية","Banking Services",70,70],["kilaw","dip","دبلوم حقوق","Diploma in Law",75,75],["cta","dip","هندسة كهرباء وإلكترونيات","Electrical & Electronics Engineering",77,null],["cta","dip","هندسة محركات هياكل","Aircraft Maintenance Engineering (Airframe & Engine)",80,null],["ktc","dip","محاسبة","Accounting",70,70],["ktc","dip","أمن سيبراني","Cyber Security",70,70],["ktc","dip","إدارة نظم معلومات","Management Information Systems",70,70],["ktc","dip","نظم تكنولوجيا المعلومات بتشعيباتها","IT Systems (all tracks)",70,70],["cck","dip","برمجة الكمبيوتر","Computer Programming",70,null],["cck","dip","تصميم الوسائط التفاعلية","Interactive Media Design",70,70],["cck","dip","محاسبة","Accounting",70,70],["cck","dip","تطبيقات الإنترنت وتطوير الشبكة","Internet Applications & Web Development",70,70],["cck","dip","إدارة وريادة أعمال","Business Management & Entrepreneurship",70,70]];
+
 /* English names for programs, colleges and countries */
 var COUNTRIES_EN={US:"United States",UK:"United Kingdom",IE:"Ireland",AU:"Australia",NZ:"New Zealand",MT:"Malta",BH:"Bahrain",SA:"Saudi Arabia",AE:"UAE"};
 var EN={
@@ -523,15 +556,21 @@ var EN={
 "دكتور في الطب":"Doctor of Medicine (MD)","هندسة الأمن السيبراني":"Cybersecurity Engineering","الهندسة الطبية الحيوية والآلات الدقيقة":"Biomedical Engineering & Micro-devices","هندسة أنظمة الحاسوب":"Computer Systems Engineering","هندسة البرمجيات":"Software Engineering","هندسة أنظمة الطاقة":"Energy Systems Engineering","هندسة الروبوتات والميكاترونكس":"Robotics & Mechatronics Engineering","علوم البيانات والذكاء الاصطناعي":"Data Science & AI","ريادة الأعمال والابتكار":"Entrepreneurship & Innovation","إدارة سلسلة التوريد والخدمات اللوجستية":"Supply Chain & Logistics Management","التسويق الرقمي":"Digital Marketing","هندسة وعلوم المواد":"Materials Science & Engineering","الهندسة الزراعية والموارد الحيوية":"Agricultural & Bioresource Engineering","الهندسة البيئية والاستدامة":"Environmental & Sustainability Engineering"
 };
 
+/* PAAET */
+(function(){var m={"إدارة الموارد البشرية":"Human Resources Management","الإدارة المالية":"Financial Management","الادارة اللوجستيه":"Logistics Management","الاقتصاد المنزلى":"Home Economics","البنوك":"Banking","التأمين":"Insurance","التربيه الاسلاميه":"Islamic Education","التربيه الفنيه":"Art Education","التربيه الموسيقيه":"Music Education","التصميم الداخلى":"Interior Design","التسويق":"Marketing","التمريض العام":"General Nursing","التمريض المدرسى":"School Nursing","التمويل والتقييم العقاري":"Real Estate Finance & Valuation","الحاسب الالى":"Computer Studies","الرياضيات":"Mathematics Education","السجلات الطبيه":"Medical Records","الصحة الصناعية والسلامة المهنية":"Industrial Health & Occupational Safety","العلوم":"Science Education","العلوم الصيدلانيه":"Pharmaceutical Sciences","الفنون التطبيقية والتصميم":"Applied Arts & Design","الكهرباء":"Electricity Education","اللغه الانجليزيه - مرحلة ابتدائية":"English Language (Primary)","اللغه العربيه":"Arabic Language Education","المحاسبه":"Accounting","المعهد الانشائي - تمهيدي":"Construction Training Institute (Preparatory)","المعهد العالى للطاقه":"Higher Institute of Energy","انشاء مباني":"Building Construction","بيطرة - دورات تدريبية خاصة":"Veterinary (Special Training)","تثقيف صحي":"Health Education","تحضير مختبر العلوم":"Science Lab Preparation","تحفيظ قران كريم":"Quran Memorization","تعقيم":"Sterilization","تفتيش خدمات بلديه - نظافه":"Municipal Services Inspection (Cleanliness)","تفتيش عمل":"Labour Inspection","تكنولوجيا الالات الكهربائيه":"Electrical Machines Technology","تكنولوجيا التعليم":"Educational Technology","تكنولوجيا الصناعات الكيميائيه":"Chemical Industries Technology","تكنولوجيا الطاقة المتجددة":"Renewable Energy Technology","تكنولوجيا اللحام":"Welding Technology","تكنولوجيا المختبرات الطبيه":"Medical Laboratory Technology","تكنولوجيا تشغيل المصافى":"Refinery Operations Technology","تكنولوجيا كفاءة الطاقة":"Energy Efficiency Technology","تكنولوجيا مختبرات فيزياء تطبيقيه":"Applied Physics Lab Technology","تكنولوجيا مختبرات كيمياء تطبيقيه":"Applied Chemistry Lab Technology","تكنولوجيا نقل وتوزيع الطاقه الكهربائيه":"Power Transmission & Distribution Technology","تكنولوجيا هندسة الإتصالات":"Communications Engineering Technology","تكنولوجيا هندسة الكترونيات صناعية":"Industrial Electronics Engineering Technology","تكنولوجيا هندسة الكمبيوتر":"Computer Engineering Technology","تكنولوجيا هندسه الكترونيات معدات طبيه حيويه":"Biomedical Equipment Electronics Technology","تكنولوجيا هندسه بترول - استكشاف وتطوير":"Petroleum Engineering Technology (Exploration & Development)","تكنولوجيا هندسه بترول - انتاج وتصدير":"Petroleum Engineering Technology (Production & Export)","تمريض":"Nursing","تنفيذ معاملات مراكز":"Service Centre Transactions","خدمات اجتماعية":"Social Services","خدمات اداريه":"Administrative Services","خدمات فندقيه":"Hotel Services","دراسات المعلومات":"Information Studies","سكرتاريه":"Secretarial Studies","طرق":"Roads","علوم الاغذيه":"Food Sciences","علوم البيئة التطبيقية":"Applied Environmental Sciences","علوم التغذية":"Nutrition Sciences","فاصد دم":"Phlebotomy","فحص مركبات":"Vehicle Inspection","فني صحة الفم والاسنان (سنوي)":"Oral & Dental Health Technician (annual)","فني طوارىء طبيه":"Emergency Medical Technician","فني عيادة طب أسنان":"Dental Clinic Technician","قانون":"Law","لغة انجليزية - للمتوسط والثانوية":"English Language (Middle & Secondary)","لغة فرنسية":"French Language","مساحه":"Surveying","معاين فني":"Technical Inspector","معلم حاسوب":"Computer Teacher","معهد عالى للاتصالات والملاحه":"Higher Institute of Communications & Navigation","مفتش مصنفات فنية":"Artistic Works Inspector","ميكانيكا تبريد و تكييف الهواء":"Refrigeration & Air-Conditioning Mechanics","ميكانيكا سيارات":"Automotive Mechanics","ميكانيكا قوى محركه":"Power Mechanics","ميكانيكا هندسه بحريه":"Marine Engineering Mechanics","نظم المعلومات الادارية":"Management Information Systems","المعهد الصناعى - الشويخ":"Industrial Institute \u2013 Shuwaikh","المعهد الصناعى - صباح السالم":"Industrial Institute \u2013 Sabah Al-Salem","المعهد العالى للخدمات الإدارية":"Higher Institute of Administrative Services","المعهد العالى للطاقة":"Higher Institute of Energy","دورات تدريبيه خاصه - فنى":"Special Technical Training Courses","كليه التربيه الاساسيه":"College of Basic Education","كليه التمريض":"College of Nursing","كليه الدراسات التجاريه":"College of Business Studies","كليه الدراسات التكنولوجيه":"College of Technological Studies","كليه العلوم الصحيه":"College of Health Sciences","معهد التدريب الانشائى":"Construction Training Institute","معهد التمريض":"Nursing Institute","معهد العالي للاتصالات والملاحة":"Higher Institute of Communications & Navigation"};for(var k in m)if(!EN[k])EN[k]=m[k];})();
+
+/* PUC */
+(function(){var m={"هندسة كهربائية":"Electrical Engineering","هندسة الكمبيوتر":"Computer Engineering","هندسة نظم":"Systems Engineering","علوم كمبيوتر":"Computer Science","تصميم جرافيكي":"Graphic Design","محاسبة":"Accounting","إدارة":"Management","تمويل":"Finance","اقتصاد":"Economics","علوم اجتماعية وسلوكية":"Social & Behavioral Sciences","العلاقات الدولية":"International Relations","وسائل إعلامية":"Media","لغة إنجليزية":"English Language","نظم معلومات":"Information Systems","إدارة موارد بشرية":"Human Resources Management","ليسانس حقوق":"Bachelor of Law (LLB)","هندسة الإلكترونيات والاتصالات":"Electronics & Communications Engineering","هندسة كمبيوتر":"Computer Engineering","هندسة معمارية":"Architectural Engineering","هندسة مدنية":"Civil Engineering","نظم وتقنية المعلومات":"Information Systems & Technology","إدارة نظم معلومات":"Management Information Systems","علوم وتطبيقات الذكاء الاصطناعي":"Artificial Intelligence Science & Applications","البنوك والتمويل":"Banking & Finance","تشغيل الطيران والمطارات":"Aviation & Airport Operations","إدارة المناسبات":"Events Management","إدارة نظم المعلومات":"Management Information Systems","التكنولوجيا الحيوية":"Biotechnology","هندسة كهربائية وكمبيوتر":"Electrical & Computer Engineering","علوم حاسوب":"Computer Science","إدارة سلسلة الموارد اللوجستية":"Supply Chain & Logistics Management","هندسة طبية":"Biomedical Engineering","تربية رياضيات":"Mathematics Education","تربية لغة إنجليزية":"English Language Education","ريادة الأعمال":"Entrepreneurship","تصميم داخلي":"Interior Design","إدارة أعمال بتشعيباتها":"Business Administration (all majors)","إعلام":"Mass Communication","هندسة الكهرباء والإلكترونيات":"Electrical & Electronics Engineering","الخدمات اللوجستية":"Logistics","علوم البحرية":"Marine Science","المحاسبة":"Accounting","هندسة صيانة طائرات بتشعيباتها":"Aircraft Maintenance Engineering (all tracks)","إدارة أعمال":"Business Administration","مراقبة الملاحة الجوية":"Air Traffic Control","تكنولوجيا الهندسة الكهربائية":"Electrical Engineering Technology","تكنولوجيا المعلومات":"Information Technology","تكنولوجيا الهندسة المدنية":"Civil Engineering Technology","تكنولوجيا هندسة الكمبيوتر":"Computer Engineering Technology","تطوير المواقع الإلكترونية":"Web Development","تصميم داخلي وديكور":"Interior Design & Decoration","خدمات مصرفية":"Banking Services","دبلوم حقوق":"Diploma in Law","هندسة كهرباء وإلكترونيات":"Electrical & Electronics Engineering","هندسة محركات هياكل":"Aircraft Maintenance Engineering (Airframe & Engine)","أمن سيبراني":"Cyber Security","نظم تكنولوجيا المعلومات بتشعيباتها":"IT Systems (all tracks)","برمجة الكمبيوتر":"Computer Programming","تصميم الوسائط التفاعلية":"Interactive Media Design","تطبيقات الإنترنت وتطوير الشبكة":"Internet Applications & Web Development","إدارة وريادة أعمال":"Business Management & Entrepreneurship","الجامعة الأمريكية في الكويت":"American University of Kuwait (AUK)","كلية القانون الكويتية العالمية":"Kuwait International Law School (KILAW)","كلية الكويت للعلوم والتكنولوجيا":"Kuwait College of Science & Technology (KCST)","جامعة الشرق الأوسط الأمريكية":"American University of the Middle East (AUM)","الجامعة الأسترالية":"Australian University (AU)","الجامعة الأمريكية الدولية":"American International University (AIU)","جامعة الخليج للعلوم والتكنولوجيا":"Gulf University for Science & Technology (GUST)","كلية الشرق الأوسط الأمريكية":"American College of the Middle East (ACM)","كلية بوكسهل الكويت":"Box Hill College Kuwait","كلية التكنولوجيا والطيران":"College of Technology & Aviation","كلية الكويت التقنية":"Kuwait Technical College","كلية الجونكوين الكندية في الكويت":"Algonquin / Canadian College of Kuwait"};for(var k in m)if(!EN[k])EN[k]=m[k];})();
+
 </script>
 <script>
 "use strict";
 /* ---------- text (Arabic / English) ---------- */
 var T={
  title:["مستشار التخصص الجامعي","University Major Finder"],
- heroSub:["دخّل درجاتك واعرف وين يوصلك معدلك — جامعة الكويت، جامعة عبدالله السالم، والبعثات الخارجية.","Enter your scores and see where they can take you — Kuwait University, Abdullah Al Salem University and MOHE scholarships abroad."],
+ heroSub:["دخّل درجاتك واعرف وين يوصلك معدلك — جامعة الكويت، جامعة عبدالله السالم، التطبيقي، البعثات الداخلية والبعثات الخارجية.","Enter your scores and see where they can take you — Kuwait University, Abdullah Al Salem University, PAAET, internal scholarships and MOHE scholarships abroad."],
  badge:["بيانات رسمية · أقل شخص مقبول 27/26","Official data · Lowest admitted 2026/27"],
- steps:[["الدرجات","الوجهة","المعدلات","التخصصات","التقديم"],["Scores","Destination","Your rates","Programs","Apply"]],
+ steps:[["الدرجات","الوجهة","التخصصات","التقديم"],["Scores","Destination","Programs","Apply"]],
  s1h:["درجاتك","Your scores"],
  s1lead:["دخّل نسبة الثانوية ودرجات اختبارات القدرات (الإنجليزي والرياضيات).","Enter your high school average and your aptitude test results (English and Math)."],
  hs:["نسبة الثانوية","High school average"], track:["القسم","Track"], sci:["علمي","Science"], lit:["أدبي","Arts"],
@@ -541,7 +580,7 @@ var T={
  next:["التالي ←","Next →"], back:["→ رجوع","← Back"], restart:["ابدأ من جديد","Start over"],
  s2h:["وين حاب تدرس؟","Where would you like to study?"],
  s2lead:["اختر وجهتك وبنحسب لك المعدلات اللي تخصها.","Choose a destination and we'll calculate the rates that apply to it."],
- kwT:["جامعات الكويت","Kuwait universities"], kwS:["جامعة الكويت وجامعة عبدالله السالم","Kuwait University & Abdullah Al Salem University"],
+ kwT:["جامعات الكويت","Kuwait universities"], kwS:["جامعة الكويت، عبدالله السالم، التطبيقي والبعثات الداخلية","KU, AASU, PAAET & internal scholarships"],
  abT:["البعثات الخارجية","Scholarships abroad"], abS:["خطة بعثات وزارة التعليم العالي 2027/2026 — 9 دول","MOHE Scholarship Plan 2026/27 — 9 countries"], programs:["تخصص","programs"],
  s3h:["معدلاتك المكافئة","Your equivalent rates"],
  s3leadAb:["معدلك لكل مجموعة تخصصات حسب خطة البعثات.","Your rate for each group of programs under the scholarship plan."],
@@ -549,8 +588,8 @@ var T={
  arLabel:["اختبار اللغة العربية","Arabic test"],
  arHint:["مطلوب للآداب والشريعة والعلوم الاجتماعية والتربية.","Needed for Arts, Sharia, Social Sciences and Education."],
  officialAb:["المعدلات محسوبة حسب الأوزان المعتمدة من وزارة التعليم العالي، ومقارنة بأقل شخص مقبول 27/26 من خطة البعثات الرسمية.","Rates use the Ministry of Higher Education's approved weights and are compared with the lowest admitted in 2026/27 from the official scholarship plan."],
- officialKw:["المعدلات محسوبة حسب الأوزان الرسمية المنشورة على موقع جامعة الكويت، ومقارنة بأقل شخص مقبول 27/26 من المصادر الرسمية.","Rates use the official weights published on Kuwait University's website and are compared with the lowest admitted in 2026/27 from official sources."],
- showMajors:["اعرض التخصصات ←","Show programs →"],
+ officialKw:["المعدلات محسوبة حسب الأوزان الرسمية المنشورة على موقع جامعة الكويت، ومقارنة بأقل شخص مقبول 27/26 من المصادر الرسمية. التطبيقي والبعثات الداخلية يعتمدان على نسبة الثانوية مباشرة.","Rates use the official weights published on Kuwait University's website and are compared with the lowest admitted in 2026/27 from official sources. PAAET and internal scholarships use your high school average directly."],
+ applyTop:["ابي اقدم 💬","I want to apply 💬"], showMajors:["اعرض التخصصات ←","Show programs →"], showMore:["عرض {n} تخصصات إضافية","Show {n} more"], showAll:["عرض الكل ({n})","Show all ({n})"], showLess:["عرض أقل ▴","Show less ▴"],
  needAr:["يحتاج درجة العربي","Needs Arabic score"], notElig:["غير مؤهل","Not eligible"],
  gateHs:["يشترط ثانوية {n}% فأعلى","Requires {n}%+ in high school"], gateEn:["يشترط إنجليزي {n}% فأعلى","Requires {n}%+ in English"],
  abH4:["البعثات الخارجية — اختر خياراتك","Scholarships abroad — choose your options"], kwH4:["جامعات الكويت — التخصصات","Kuwait universities — programs"],
@@ -558,7 +597,7 @@ var T={
  lead4AbStatus:["مرتبة حسب فرصتك: الأقرب لك أولاً (الأقل في «ينقصك»)، من ضمن المعدل إلى دون أقل شخص مقبول. اضغط «أضف» على اللي يعجبك.","Sorted by your chances: the closest first (smallest “short by”), from within range to below lowest admitted. Tap “Add” on the ones you like."],
  lead4Kw:["التخصصات مرتبة من الأعلى للأقل حسب أقل شخص مقبول 27/26.","Programs are sorted from highest to lowest admitted rate (2026/27)."],
  fCat:["1. الفئة","1. Category"], fCountry:["2. الدولة","2. Country"], allCountries:["كل الدول","All countries"],
- fUni:["1. الجامعة","1. University"], all:["الكل","All"], ku:["جامعة الكويت","Kuwait University"], aasu:["جامعة عبدالله السالم","Abdullah Al Salem University"],
+ fUni:["1. الجامعة","1. University"], all:["الكل","All"], ku:["جامعة الكويت","Kuwait University"], aasu:["جامعة عبدالله السالم","Abdullah Al Salem University"], paaet:["التطبيقي","PAAET"], puc:["البعثات الداخلية","Internal scholarships"], pucFull:["البعثات الداخلية — مجلس الجامعات الخاصة","Internal scholarships — Private Universities Council"], fPucUni:["الجامعة / الكلية","University / College"], allUnis:["كل الجامعات","All universities"], minApplyPuc:["الحد الأدنى للتقديم","Minimum to apply"], sciOnly:["علمي فقط","Science only"], engRank:["المفاضلة: 65% ثانوية + 15% إنجليزي + 20% رياضيات","Ranking: 65% HS + 15% English + 20% Math"], srcPuc:["خطة البعثات الداخلية 27/26 – مجلس الجامعات الخاصة","PUC internal scholarships plan 2026/27"], paaetFull:["الهيئة العامة للتعليم التطبيقي والتدريب","PAAET"], fGender:["الجنس (للتطبيقي)","Gender (for PAAET)"], boys:["بنين","Boys"], girls:["بنات","Girls"], pickGender:["اختر بنين أو بنات لعرض تخصصات التطبيقي.","Choose Boys or Girls to see PAAET programs."], degBach:["بكالوريوس","Bachelor"], degDip:["دبلوم","Diploma"], degInst:["دبلوم معاهد","Institute diploma"], testInt:["اختبار قدرات ومقابلة","Aptitude test + interview"], minS1:["الحد الأدنى – فصل أول","Minimum – Semester 1"], minS2:["فصل ثاني","Semester 2"], notS2:["غير متاح بالفصل الثاني","Not offered in Semester 2"], srcPaaet:["الحدود الدنيا – التطبيقي","PAAET minimum rates"],
  fCollege:["2. الكلية","2. College"], allColleges:["كل الكليات","All colleges"],
  searchOth:["ابحث عن تخصص… مثال: تمريض، علم البيانات","Search programs… e.g. Nursing, Data Science"], search:["ابحث عن تخصص…","Search programs…"],
  cmpAb:["نقارن بمعدلك المكافئ لـ{c}","Compared with your {c} equivalent rate"], cmpHs:["نقارن بنسبة الثانوية","Compared with your high school average"],
@@ -573,7 +612,7 @@ var T={
  above:["أعلى بـ","Above by"], short:["ينقصك","Short by"], hsBased:["بنسبة الثانوية","high school based"], code:["رمز","code"],
  est:["معدل تقديري","estimated rate"], mmi:["يشمل مقابلة MMI","includes MMI interview"], add:["+ أضف","+ Add"], added:["✓ مضاف","✓ Added"],
  empty:["ما في تخصصات تطابق البحث.","No programs match your search."],
- kwEndTxt:["هذي النتائج استرشادية، والتقديم على جامعة الكويت وجامعة عبدالله السالم يكون مباشرة عبر موقع كل جامعة.","These results are a guide. You apply to Kuwait University and Abdullah Al Salem University directly through each university's website."],
+ kwEndTxt:["هذي النتائج استرشادية، والتقديم على جامعة الكويت وجامعة عبدالله السالم والتطبيقي والبعثات الداخلية يكون مباشرة عبر موقع كل جهة.","These results are a guide. You apply to Kuwait University, Abdullah Al Salem University, PAAET and the Private Universities Council directly through each one's website."],
  kwEndBtn:["شوف خيارات البعثات الخارجية ✈️","Explore scholarships abroad ✈️"],
  trayNone:["ما اخترت خيار للحين — تقدر تكمل بدون","No options picked yet — you can continue without"], trayN:["{n} خيار مختار","{n} option(s) picked"],
  applyNow:["قدّم الحين ←","Apply now →"],
@@ -663,7 +702,8 @@ function kuKey(r){ var c=r[0].split(" / ")[0];
 /* AASU has not published its weights: KU weights used as an estimate */
 function aasuKey(m){ if(m==="دكتور في الطب")return "med"; if(/هندسة|الهندسة/.test(m))return "eng"; return "g70"; }
 
-var S={step:1,maxStep:1,track:"sci",engMode:"pct",path:null,cat:"med",country:"all",uni:"all",college:"all",q:"",picks:[]};
+var S={step:1,maxStep:1,track:"sci",engMode:"pct",path:null,cat:"med",country:"all",uni:"all",college:"all",gender:null,q:"",picks:[],shown:0};
+var PAGE=10;
 var $=function(id){return document.getElementById(id)};
 
 /* ---------- helpers ---------- */
@@ -701,13 +741,13 @@ function applyLang(){
   $("langBtn").textContent=LANG==="en"?"عربي":"English"; $("langBtn").lang=LANG==="en"?"ar":"en";
   $("interest").placeholder=t("interestPh"); $("name").placeholder=t("namePh");
   $("kwFlag").innerHTML=flag("KW");
-  $("kwCount").textContent=(KU.length+AASU.length)+" "+t("programs"); $("abCount").textContent=MOHE.length+" "+t("programs");
+  var pu={};PAAET.forEach(function(r){pu[r[3]+r[6]]=1}); $("kwCount").textContent=(KU.length+AASU.length+Object.keys(pu).length+PUC.length)+" "+t("programs"); $("abCount").textContent=MOHE.length+" "+t("programs");
   setEngHint(); buildIelts(); drawStepper();
-  if(S.step===3)drawEq(); if(S.step===4)drawOptions(); if(S.step===5)drawSummary(); updateTray();
+  if(S.step===3){drawEq();drawOptions();} if(S.step===4)drawSummary(); updateTray();
 }
 
 /* ---------- stepper & navigation ---------- */
-function stepCount(){ return S.path==="kw"?4:5; }
+function stepCount(){ return S.path==="kw"?3:4; }
 function drawStepper(){
   var labels=t("steps").slice(0,stepCount());
   $("stepper").innerHTML=labels.map(function(x,i){var n=i+1,cls=n<S.step?"done":n===S.step?"cur":"";
@@ -716,10 +756,10 @@ function drawStepper(){
 function go(n){
   if(n>S.maxStep||n>stepCount())return;
   S.step=n; document.querySelectorAll(".step").forEach(function(el){el.classList.toggle("on",+el.dataset.step===n)});
-  if(n>=4)refreshPicks();
+  if(n>=3)refreshPicks();
   drawStepper();
-  if(n===3)drawEq(); if(n===4)drawOptions(); if(n===5)drawSummary();
-  $("tray").classList.toggle("on",n===4&&S.path==="ab");
+  if(n===3){drawEq();drawOptions();} if(n===4)drawSummary();
+  $("tray").classList.toggle("on",n===3&&S.path==="ab");
   updateTray();
   window.scrollTo({top:0,behavior:"smooth"}); postHeight();
 }
@@ -786,9 +826,27 @@ function kuwaitRows(){
       wk:k,you:kuRate(k,s),gate:kuGate(k,s),needAr:!!KW[k].ar&&!isFinite(s.ar)}); });
   AASU.forEach(function(r){ if(r[2]&&r[2]!==S.track)return; var k=aasuKey(r[0]);
     rows.push({key:"aasu|"+r[0]+"|"+r[2],path:"kw",uni:"aasu",college:"",ar:r[0],sec:r[2],cut:r[1],type:"E",wk:k,you:kuRate(k,s),gate:"",needAr:false,est:true,mmi:r[0]==="دكتور في الطب"}); });
-  return rows;
+  return rows.concat(paaetRows()).concat(pucRows());
 }
 /* display text for a row in the current language */
+/* PAAET: high school % compared directly with the Semester-1 minimum; filtered by gender and track */
+function paaetRows(){
+  if(!S.gender)return [];
+  var s=scores(), both={};
+  PAAET.forEach(function(r){ if(r[6]==="lit")both[r[3]]=1; });
+  return PAAET.filter(function(r){ return r[0]===S.gender && (!r[6]||r[6]===S.track); }).map(function(r){
+    return {key:"paaet|"+r[0]+"|"+r[3]+"|"+r[6],path:"kw",uni:"paaet",college:r[1],ar:r[3],deg:r[2],sec:both[r[3]]?r[6]:"",cut:r[4],cut2:r[5],type:"H",you:s.hs,gate:"",needAr:false,test:!!r[7]};
+  });
+}
+/* PUC internal scholarships: high school % vs the published minimum to apply (by track) */
+function pucRows(){
+  var s=scores();
+  return PUC.filter(function(r){ return S.track==="sci"||r[5]!==null; }).map(function(r){
+    var m=S.track==="sci"?r[4]:r[5], isEng=/هندس/.test(r[2])&&r[1]==="bach";
+    return {key:"puc|"+r[0]+"|"+r[1]+"|"+r[2],path:"kw",uni:"puc",college:r[0],ar:r[2],deg:r[1],cut:m,type:"H",you:s.hs,gate:"",needAr:false,sciOnly:r[5]===null,engRank:isEng};
+  });
+}
+function pucUniName(id){ var u=PUC_UNI.filter(function(x){return x[0]===id})[0]; return u?(LANG==="en"?u[2]:u[1]):id; }
 function rowTitleHtml(r){ return r.path==="ab"?flag(r.country)+esc(ctry(r.country)):esc(rowTitle(r)); }
 function rowTitle(r){
   if(r.path==="ab")return ctry(r.country);
@@ -797,6 +855,8 @@ function rowTitle(r){
 function rowSub(r){
   if(r.path==="ab")return abName(r)+(r.type==="H"&&!r.noCut?" · "+t("hsBased"):"")+(r.noCut?" · "+t("noCut"):"")+(r.est?" · "+t("est"):"");
   if(r.uni==="ku")return t("ku")+" · "+nm(r.college)+" · "+t("code")+" "+r.code+(r.type==="H"?" · "+t("hsBased"):"");
+  if(r.uni==="puc")return t("puc")+" · "+pucUniName(r.college)+" · "+t(r.deg==="bach"?"degBach":"degDip")+(r.sciOnly?" · "+t("sciOnly"):"")+(r.engRank?" · "+t("engRank"):"");
+  if(r.uni==="paaet")return t("paaet")+" · "+nm(r.college)+" · "+t({bach:"degBach",dip:"degDip",inst:"degInst"}[r.deg])+(r.test?" · "+t("testInt"):"");
   return t("aasu")+" · "+t("est")+(r.mmi?" · "+t("mmi"):"");
 }
 function countBy(rows,f){var o={};rows.forEach(function(r){var k=f(r);o[k]=(o[k]||0)+1});return o}
@@ -805,7 +865,7 @@ function countBy(rows,f){var o={};rows.forEach(function(r){var k=f(r);o[k]=(o[k]
 function chip(group,v,label,on,count){return '<button type="button" class="chip" data-g="'+group+'" data-v="'+esc(v)+'" aria-pressed="'+on+'">'+label+(count!=null?'<span class="c">'+count+'</span>':"")+'</button>'}
 function drawOptions(){
   var s=scores(), rows, html="";
-  $("kwEnd").hidden=S.path!=="kw";
+  $("kwEnd").hidden=S.path!=="kw"; $("applyTop").hidden=S.path!=="ab";
   if(S.path==="ab"){
     $("h4").textContent=t("abH4"); $("lead4").textContent=t("lead4Ab");
     var catCount=countBy(trackMohe(),catOf);
@@ -822,9 +882,16 @@ function drawOptions(){
   } else {
     $("h4").textContent=t("kwH4"); $("lead4").textContent=t("lead4Kw");
     var all=kuwaitRows(), uc=countBy(all,function(r){return r.uni});
-    html+='<div class="flabel">'+t("fUni")+'</div><div class="chips">'+chip("uni","all",t("all"),S.uni==="all",all.length)+chip("uni","ku",t("ku"),S.uni==="ku",uc.ku)+chip("uni","aasu",t("aasu"),S.uni==="aasu",uc.aasu)+'</div>';
+    html+='<div class="flabel">'+t("fUni")+'</div><div class="chips">'+chip("uni","all",t("all"),S.uni==="all",all.length)+chip("uni","ku",t("ku"),S.uni==="ku",uc.ku)+chip("uni","aasu",t("aasu"),S.uni==="aasu",uc.aasu)+chip("uni","paaet",t("paaet"),S.uni==="paaet",S.gender?(uc.paaet||0):null)+chip("uni","puc",t("puc"),S.uni==="puc",uc.puc)+'</div>';
+    if(S.uni==="all"||S.uni==="paaet")html+='<div class="flabel">'+t("fGender")+'</div><div class="chips">'+chip("gender","M",t("boys"),S.gender==="M")+chip("gender","F",t("girls"),S.gender==="F")+'</div>';
     rows=S.uni==="all"?all:all.filter(function(r){return r.uni===S.uni});
-    if(S.uni==="ku"){
+    if(S.uni==="puc"){
+      var pc=countBy(rows,function(r){return r.college});
+      if(S.college!=="all"&&!pc[S.college])S.college="all";
+      html+='<div class="flabel">'+t("fPucUni")+'</div><div class="chips">'+chip("college","all",t("allUnis"),S.college==="all")+PUC_UNI.filter(function(u){return pc[u[0]]}).map(function(u){return chip("college",u[0],pucUniName(u[0]),S.college===u[0],pc[u[0]])}).join("")+'</div>';
+      if(S.college!=="all")rows=rows.filter(function(r){return r.college===S.college});
+    }
+    if(S.uni==="ku"||(S.uni==="paaet"&&S.gender)){
       var col=countBy(rows,function(r){return r.college});
       if(S.college!=="all"&&!col[S.college])S.college="all";
       html+='<div class="flabel">'+t("fCollege")+'</div><div class="chips">'+chip("college","all",t("allColleges"),S.college==="all")+Object.keys(col).map(function(k){return chip("college",k,nm(k),S.college===k,col[k])}).join("")+'</div>';
@@ -844,14 +911,17 @@ function drawOptions(){
   if(S.path==="ab")$("lead4").textContent=byStatus?t("lead4AbStatus"):t("lead4Ab");
   var focus=document.activeElement&&document.activeElement.id==="q", caret=focus?document.activeElement.selectionStart:0;
   $("filters").innerHTML=html;
-  $("list").innerHTML=rows.length?rows.map(cardHtml).join(""):'<div class="empty">'+t("empty")+'</div>';
+  if(!S.shown)S.shown=PAGE;
+  var vis=rows.slice(0,S.shown), rest=rows.length-vis.length;
+  $("list").innerHTML=rows.length?vis.map(cardHtml).join(""):'<div class="empty">'+(S.path==="kw"&&(S.uni==="paaet"||S.uni==="all")&&!S.gender&&S.uni==="paaet"?t("pickGender"):t("empty"))+'</div>';
+  $("list").innerHTML+=rest>0?'<div class="more"><button type="button" class="btn primary" id="moreBtn">'+t("showMore",{n:Math.min(rest,PAGE)})+'</button><button type="button" class="btn ghost" id="allBtn">'+t("showAll",{n:rows.length})+'</button></div>':(rows.length>PAGE?'<div class="more"><button type="button" class="btn ghost" id="lessBtn">'+t("showLess")+'</button></div>':"");
   if(focus&&$("q")){$("q").focus();try{$("q").setSelectionRange(caret,caret)}catch(e){}}
   postHeight();
 }
 function cardHtml(r){
   var st=rowStatus(r), on=S.picks.some(function(p){return p.key===r.key}), canPick=r.path==="ab";
   return '<div class="card'+(on?" sel":"")+'"><div><div class="t">'+rowTitleHtml(r)+'</div><div class="s">'+esc(rowSub(r))+'</div></div><span class="pill '+st.cls+'">'+st.txt+'</span>'+
-    '<div class="nums">'+(r.cut!==null?'<span>'+t("lowest")+' <b class="num">'+fx(r.cut)+'%</b></span>':"")+(r.path==="ab"?'<span>'+t("minApply")+' <b class="num">'+r.min+'%</b></span>':"")+
+    '<div class="nums">'+(r.uni==="puc"?'<span>'+t("minApplyPuc")+' <b class="num">'+fx(r.cut)+'%</b></span>':r.uni==="paaet"?'<span>'+t("minS1")+' <b class="num">'+fx(r.cut)+'%</b></span><span>'+t("minS2")+' <b class="num">'+(r.cut2!=null?fx(r.cut2)+'%':'—')+'</b></span>':r.cut!==null?'<span>'+t("lowest")+' <b class="num">'+fx(r.cut)+'%</b></span>':"")+(r.path==="ab"?'<span>'+t("minApply")+' <b class="num">'+r.min+'%</b></span>':"")+
     '<span>'+(r.type==="H"?t("yourHs"):t("yourRate"))+' <b>'+(isFinite(r.you)?pct(r.you):"—")+'</b></span><span class="gap '+st.cls+'">'+(r.gate?esc(r.gate):gapTxt(r.you,r.cut===null?r.min:r.cut))+'</span>'+
     (canPick?'<button type="button" class="pick" data-key="'+esc(r.key)+'" aria-pressed="'+on+'">'+(on?t("added"):t("add"))+'</button>':"")+'</div></div>';
 }
@@ -863,7 +933,7 @@ function togglePick(k){
   if(i>-1)S.picks.splice(i,1); else { var r=rowByKey(k); if(r)S.picks.push(r); }
   drawOptions(); updateTray();
 }
-function updateTray(){ var n=S.picks.length; $("trayInfo").innerHTML=n?t("trayN",{n:"<b>"+n+"</b>"}):t("trayNone"); }
+function updateTray(){ var n=S.picks.length; if(S.path==="ab")$("applyTop").href=waLink(); $("trayInfo").innerHTML=n?t("trayN",{n:"<b>"+n+"</b>"}):t("trayNone"); }
 
 /* ---------- step 5 (abroad only) ---------- */
 function drawSummary(){
@@ -899,21 +969,22 @@ function buildMessage(){
       L.push("   "+(i+1)+") "+abName(p)+" — "+FLAGS[p.country]+" "+ctry(p.country)+" ("+(p.cut!==null?t("waLowest")+" "+fx(p.cut):t("waMin")+" "+p.min)+"% · "+(p.type==="H"?t("waMineHs"):p.est?t("waMineEst"):t("waMine"))+" "+f2(p.you)+"%)");
     });
   }
-  L.push("• "+t("waInterest")+": "+($("interest").value.trim()||t("waUndecided")));
+  L.push("• "+t("waInterest")+": "+($("interest").value.trim()||(S.picks.length?abName(S.picks[0]):t("waUndecided"))));
   return L.join("\n");
 }
+function waLink(){ return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(buildMessage()); }
 function updateMessage(){
   var m=buildMessage(); $("preview").textContent=m;
-  $("waBtn").href="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(m);
+  $("waBtn").href=waLink();
 }
 
 /* ---------- events ---------- */
-function restart(){S.picks=[];S.path=null;S.maxStep=1;S.uni="all";S.college="all";S.cat="med";S.country="all";S.q="";
+function restart(){S.picks=[];S.path=null;S.gender=null;S.maxStep=1;S.uni="all";S.college="all";S.cat="med";S.country="all";S.q="";
   ["hs","math","eng","ar","interest","name"].forEach(function(id){$(id).value=""});$("engSel").value="";
   document.querySelectorAll(".dest").forEach(function(d){d.setAttribute("aria-pressed","false")});go(1);}
 function choosePath(p){
   S.path=p; S.q=""; document.querySelectorAll(".dest").forEach(function(d){d.setAttribute("aria-pressed",d.dataset.path===p)});
-  if(p!=="ab")S.picks=[]; S.maxStep=3; unlock(3);
+  if(p!=="ab")S.picks=[]; S.maxStep=3; S.shown=0; unlock(3);
 }
 document.addEventListener("click",function(ev){
   var b=ev.target.closest("button,a"); if(!b)return;
@@ -925,18 +996,21 @@ document.addEventListener("click",function(ev){
   if(b.closest("#engMode")){setEngMode(b.dataset.v);$("f-eng").classList.remove("err");return}
   if(b.dataset.path){choosePath(b.dataset.path);track(b.dataset.path==="kw"?"destination_kuwait":"destination_abroad");return}
   if(b.id==="switchAb"){choosePath("ab");track("destination_abroad",{from:"kuwait_results"});return}
-  if(b.dataset.g){var g=b.dataset.g; S[g]=b.dataset.v; if(g==="cat")track("category_view",{category:b.dataset.v}); if(g==="country"&&b.dataset.v!=="all")track("country_view",{country:b.dataset.v,category:S.cat}); if(g==="uni"&&b.dataset.v!=="all")track("university_view",{university:b.dataset.v}); if(g==="cat"){S.country="all";S.q=""} if(g==="uni"){S.college="all"} drawOptions(); return}
+  if(b.dataset.g){var g=b.dataset.g; S[g]=b.dataset.v; S.shown=0; if(g==="cat")track("category_view",{category:b.dataset.v}); if(g==="country"&&b.dataset.v!=="all")track("country_view",{country:b.dataset.v,category:S.cat}); if(g==="uni"&&b.dataset.v!=="all")track("university_view",{university:b.dataset.v}); if(g==="cat"){S.country="all";S.q=""} if(g==="uni"){S.college="all"} drawOptions(); return}
   if(b.dataset.key){var adding=!S.picks.some(function(p){return p.key===b.dataset.key}); togglePick(b.dataset.key); if(adding){var pr=rowByKey(b.dataset.key); track("option_added",{category:pr.cat.id,country:pr.country});} return}
   if(b.dataset.rm!=null){S.picks.splice(+b.dataset.rm,1);drawPicked();updateMessage();return}
-  if(b.id==="addAr"){go(3);setTimeout(function(){$("ar").focus()},300);return}
+  if(b.id==="addAr"){$("eqwrap").open=true;$("ar").scrollIntoView({behavior:"smooth",block:"center"});setTimeout(function(){$("ar").focus()},300);return}
+  if(b.id==="moreBtn"){S.shown+=PAGE;drawOptions();return}
+  if(b.id==="allBtn"){S.shown=1e9;drawOptions();return}
+  if(b.id==="lessBtn"){S.shown=PAGE;drawOptions();$("filters").scrollIntoView({behavior:"smooth"});return}
 });
 $("go2").addEventListener("click",function(){ if(validate1()){unlock(2);track("scores_submitted",{track:S.track,english_type:S.engMode});} else { var e=document.querySelector(".field.err input:not([hidden]),.field.err select:not([hidden])"); if(e)e.focus(); } });
-$("go4").addEventListener("click",function(){ var k=num($("ar").value); var bad=S.path==="kw"&&$("ar").value!==""&&!inRange(k,0,100); $("f-ar").classList.toggle("err",bad); if(!bad)unlock(4); else $("ar").focus(); });
-$("go5").addEventListener("click",function(){ if(S.path==="ab"){unlock(5);track("apply_step",{options_picked:S.picks.length});} });
+$("applyTop").addEventListener("click",function(){ $("applyTop").href=waLink(); track("whatsapp_click",{options_picked:S.picks.length,categories:uniq(S.picks.map(function(p){return p.cat.id})).join(",")||S.cat,from:"top_button"}); });
+$("go5").addEventListener("click",function(){ if(S.path==="ab"){unlock(4);track("apply_step",{options_picked:S.picks.length});} });
 $("waBtn").addEventListener("click",function(){ track("whatsapp_click",{options_picked:S.picks.length,categories:uniq(S.picks.map(function(p){return p.cat.id})).join(",")||S.cat,major_entered:!!$("interest").value.trim()}); });
 ["hs","math","eng","engSel"].forEach(function(id){$(id).addEventListener("input",function(){$(id).closest(".field").classList.remove("err"); if(S.maxStep>1){S.maxStep=1;drawStepper()}})});
-$("ar").addEventListener("input",function(){$("f-ar").classList.remove("err"); if(S.maxStep>3)S.maxStep=3; drawStepper(); drawEq();});
-$("filters").addEventListener("input",function(e){if(e.target.id==="q"){S.q=e.target.value;drawOptions()}});
+$("ar").addEventListener("input",function(){ var bad=$("ar").value!==""&&!inRange(num($("ar").value),0,100); $("f-ar").classList.toggle("err",bad); if(!bad){drawEq();drawOptions();} });
+$("filters").addEventListener("input",function(e){if(e.target.id==="q"){S.q=e.target.value;S.shown=0;drawOptions()}});
 ["interest","name"].forEach(function(id){$(id).addEventListener("input",updateMessage)});
 $("copyBtn").addEventListener("click",function(){
   var m=buildMessage();
